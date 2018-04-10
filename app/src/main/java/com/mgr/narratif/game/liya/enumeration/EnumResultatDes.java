@@ -4,16 +4,16 @@ package com.mgr.narratif.game.liya.enumeration;
  * Created by mblandin2016 on 10/04/2018.
  */
 
-public enum EnumCritiqueDes {
+public enum EnumResultatDes {
     AUCUN,
     REUSSITE,
     REUSSITE_CRITIQUE,
     ECHEC,
     ECHEC_CRITIQUE;
 
-    public static String getStringEnumValeur(EnumCritiqueDes value){
+    public static String getStringEnumValeur(EnumResultatDes value){
         String retour = "";
-        for (EnumCritiqueDes resultatDes : EnumCritiqueDes.values()) {
+        for (EnumResultatDes resultatDes : EnumResultatDes.values()) {
             if (resultatDes.name().equals(value.name())) {
                 retour = resultatDes.name();
             }
@@ -22,9 +22,9 @@ public enum EnumCritiqueDes {
         return retour;
     }
 
-    public static EnumCritiqueDes getEnumStringValeur(String valeur){
-        EnumCritiqueDes retour  = null;
-        for (EnumCritiqueDes resultatDes : EnumCritiqueDes.values()) {
+    public static EnumResultatDes getEnumStringValeur(String valeur){
+        EnumResultatDes retour  = null;
+        for (EnumResultatDes resultatDes : EnumResultatDes.values()) {
             if (resultatDes.name().equals(valeur)) {
                 retour = resultatDes;
             }

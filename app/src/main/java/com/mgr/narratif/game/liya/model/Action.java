@@ -1,7 +1,5 @@
 package com.mgr.narratif.game.liya.model;
 
-import com.mgr.narratif.game.liya.enumeration.EnumCritiqueDes;
-
 import java.util.Map;
 
 /**

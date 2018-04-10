@@ -1,14 +1,10 @@
-package com.mgr.narratif.game.liya.tools;
+package com.mgr.narratif.game.liya.dto;
 
-import com.mgr.narratif.game.liya.enumeration.EnumCritiqueDes;
-
-/**
- * Created by mblandin2016 on 10/04/2018.
- */
+import com.mgr.narratif.game.liya.enumeration.EnumResultatDes;
 
 public class Des {
     private int resultat;
-    private EnumCritiqueDes type;
+    private EnumResultatDes type;
 
     public int getResultat() {
         return resultat;
@@ -17,15 +13,15 @@ public class Des {
         this.resultat = resultat;
     }
 
-    public EnumCritiqueDes getType() {
+    public EnumResultatDes getType() {
         return type;
     }
-    public void setType(EnumCritiqueDes type) {
+    public void setType(EnumResultatDes type) {
         this.type = type;
     }
 
     public Des(){}
-    public Des(int resultat, EnumCritiqueDes type) {
+    public Des(int resultat, EnumResultatDes type) {
         this.resultat = resultat;
         this.type = type;
     }

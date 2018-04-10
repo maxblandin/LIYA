@@ -1,4 +1,4 @@
-package com.mgr.narratif.game.liya.vue;
+package com.mgr.narratif.game.liya.vue.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

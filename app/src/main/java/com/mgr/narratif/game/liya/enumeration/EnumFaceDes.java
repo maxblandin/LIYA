@@ -4,7 +4,7 @@ package com.mgr.narratif.game.liya.enumeration;
  * Created by mblandin2016 on 10/04/2018.
  */
 
-public enum EnumDes {
+public enum EnumFaceDes {
     FACE6(6, 1, 5),
     FACE100(100, 5, 96);
 
@@ -12,7 +12,7 @@ public enum EnumDes {
     private int tauxReussiteCritique;
     private int tauxEchecCritique;
 
-    private EnumDes(int nbFaces, int txReuCrit, int txEcCrit) {
+    private EnumFaceDes(int nbFaces, int txReuCrit, int txEcCrit) {
         this.nbFaces = nbFaces;
         this.tauxReussiteCritique = txReuCrit;
         this.tauxEchecCritique = txEcCrit;

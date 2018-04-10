@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LIYA</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nouvelle_partie">Nouvelle partie</string>
+    <string name="continuer">Continuer</string>
+    <string name="quitter">Quitter</string>
 </resources>
