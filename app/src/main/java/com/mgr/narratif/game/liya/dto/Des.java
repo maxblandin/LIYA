@@ -1,10 +1,10 @@
 package com.mgr.narratif.game.liya.dto;
 
-import com.mgr.narratif.game.liya.enumeration.EnumResultatDes;
+import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 
 public class Des {
     private int resultat;
-    private EnumResultatDes type;
+    private ResultatDes type;
 
     public int getResultat() {
         return resultat;
@@ -13,15 +13,15 @@ public class Des {
         this.resultat = resultat;
     }
 
-    public EnumResultatDes getType() {
+    public ResultatDes getType() {
         return type;
     }
-    public void setType(EnumResultatDes type) {
+    public void setType(ResultatDes type) {
         this.type = type;
     }
 
     public Des(){}
-    public Des(int resultat, EnumResultatDes type) {
+    public Des(int resultat, ResultatDes type) {
         this.resultat = resultat;
         this.type = type;
     }

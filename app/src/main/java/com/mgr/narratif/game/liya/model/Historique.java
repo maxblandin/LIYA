@@ -1,6 +1,6 @@
 package com.mgr.narratif.game.liya.model;
 
-import com.mgr.narratif.game.liya.enumeration.EnumResultatDes;
+import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 
 /**
  * Created by mblandin2016 on 10/04/2018.
@@ -12,7 +12,7 @@ public class Historique {
     private String idHeros;
     private String idPeripetie;
     private String idAction;
-    private EnumResultatDes resultat;
+    private ResultatDes resultat;
 
     public String getId() {
         return id;
@@ -49,15 +49,15 @@ public class Historique {
         this.idAction = idAction;
     }
 
-    public EnumResultatDes getResultat() {
+    public ResultatDes getResultat() {
         return resultat;
     }
-    public void setResultat(EnumResultatDes resultat) {
+    public void setResultat(ResultatDes resultat) {
         this.resultat = resultat;
     }
 
     public Historique() {}
-    public Historique(String id, String idAventure, String idHeros, String idPeripetie, String idAction, EnumResultatDes resultat) {
+    public Historique(String id, String idAventure, String idHeros, String idPeripetie, String idAction, ResultatDes resultat) {
         this.id = id;
         this.idAventure = idAventure;
         this.idHeros = idHeros;

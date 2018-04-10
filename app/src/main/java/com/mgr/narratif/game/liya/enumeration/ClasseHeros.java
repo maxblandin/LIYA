@@ -1,5 +1,5 @@
 package com.mgr.narratif.game.liya.enumeration;
 
-public enum EnumClasseHeros {
+public enum ClasseHeros {
     LUTIN;
 }
