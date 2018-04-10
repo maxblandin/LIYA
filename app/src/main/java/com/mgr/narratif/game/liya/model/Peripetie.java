@@ -11,7 +11,6 @@ public class Peripetie {
     private String description;
     private boolean isPrologue;
     private List<Action> actions;
-    private String idChapitre;
 
     public String getId() {
         return id;
@@ -41,19 +40,11 @@ public class Peripetie {
         this.actions = actions;
     }
 
-    public String getIdChapitre() {
-        return idChapitre;
-    }
-    public void setIdChapitre(String idChapitre) {
-        this.idChapitre = idChapitre;
-    }
-
     public Peripetie() {}
-    public Peripetie(String id, String description, boolean isPrologue, List<Action> actions, String idChapitre) {
+    public Peripetie(String id, String description, boolean isPrologue, List<Action> actions) {
         this.id = id;
         this.description = description;
         this.isPrologue = isPrologue;
         this.actions = actions;
-        this.idChapitre = idChapitre;
     }
 }

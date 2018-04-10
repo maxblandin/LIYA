@@ -13,7 +13,7 @@ public class Heros {
     private String nom;
     private String histoire;
     private EnumClasseHeros classe;
-    private List<Statistique> statistiques;
+    private Statistique statistique;
 
     public String getId() {
         return id;
@@ -43,19 +43,19 @@ public class Heros {
         this.classe = classe;
     }
 
-    public List<Statistique> getStatistiques() {
-        return statistiques;
+    public Statistique getStatistiques() {
+        return statistique;
     }
-    public void setStatistiques(List<Statistique> statistiques) {
-        this.statistiques = statistiques;
+    public void setStatistiques(Statistique statistiques) {
+        this.statistique = statistiques;
     }
 
     public Heros() {}
-    public Heros(String id, String nom, String histoire, EnumClasseHeros classe, List<Statistique> statistiques) {
+    public Heros(String id, String nom, String histoire, EnumClasseHeros classe, Statistique statistique) {
         this.id = id;
         this.nom = nom;
         this.histoire = histoire;
         this.classe = classe;
-        this.statistiques = statistiques;
+        this.statistique = statistique;
     }
 }

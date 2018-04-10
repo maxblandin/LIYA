@@ -5,9 +5,11 @@ package com.mgr.narratif.game.liya.enumeration;
  */
 
 public enum EnumCritiqueDes {
+    AUCUN,
+    REUSSITE,
     REUSSITE_CRITIQUE,
-    ECHEC_CRITIQUE,
-    NORMAL;
+    ECHEC,
+    ECHEC_CRITIQUE;
 
     public static String getStringEnumValeur(EnumCritiqueDes value){
         String retour = "";

@@ -2,6 +2,8 @@ package com.mgr.narratif.game.liya.model;
 
 import com.mgr.narratif.game.liya.enumeration.EnumCritiqueDes;
 
+import java.util.Map;
+
 /**
  * Created by mblandin2016 on 10/04/2018.
  */
@@ -9,8 +11,7 @@ import com.mgr.narratif.game.liya.enumeration.EnumCritiqueDes;
 public class Action {
     private String id;
     private String libelle;
-    private EnumCritiqueDes resultatDes;
-    private String idPeripetieSuivante;
+    private Map<Integer,String> suite;
 
     public String getId() {
         return id;
@@ -26,25 +27,17 @@ public class Action {
         this.libelle = libelle;
     }
 
-    public EnumCritiqueDes getResultatDes() {
-        return resultatDes;
+    public Map<Integer, String> getSuite() {
+        return suite;
     }
-    public void setResultatDes(EnumCritiqueDes resultatDes) {
-        this.resultatDes = resultatDes;
-    }
-
-    public String getIdPeripetieSuivante() {
-        return idPeripetieSuivante;
-    }
-    public void setIdPeripetieSuivante(String idPeripetieSuivante) {
-        this.idPeripetieSuivante = idPeripetieSuivante;
+    public void setSuite(Map<Integer, String> suite) {
+        this.suite = suite;
     }
 
     public Action() {}
-    public Action(String id, String libelle, EnumCritiqueDes resultatDes, String idPeripetieSuivante) {
+    public Action(String id, String libelle, Map<Integer,String> suite) {
         this.id = id;
         this.libelle = libelle;
-        this.resultatDes = resultatDes;
-        this.idPeripetieSuivante = idPeripetieSuivante;
+        this.suite = suite;
     }
 }
