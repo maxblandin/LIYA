@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vue.activity.ChoixAventureActivity"></activity>
+        <activity android:name=".vue.activity.ChoixAventureActivity" />
+        <activity android:name=".vue.activity.ChoixHerosActivity"></activity>
     </application>
 
 </manifest>

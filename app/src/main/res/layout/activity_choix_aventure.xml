@@ -2,10 +2,14 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:text="VOUS ÊTES BIEN SUR LA SELECTION DE L'AVENTURE SI C'EST PAS FOULEC CA GROS LOL"
+    <fragment
+        android:id="@+id/fragment_choix_aventure"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        class="com.mgr.narratif.game.liya.vue.fragment.ChoixAventureFragment">
+
+    </fragment>
 </LinearLayout>

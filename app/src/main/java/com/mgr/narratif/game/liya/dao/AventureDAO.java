@@ -15,7 +15,8 @@ import java.util.Map;
 
 public class AventureDAO {
 
-    public Aventure getJeuxDeTest(){
+    public List<Aventure> getJeuxDeTest(){
+        List<Aventure> aventures = new ArrayList<>();
         Statistique s1 = new Statistique("stat1",65,45,50);
         Statistique s2 = new Statistique("stat1",45,60,60);
         Statistique s3 = new Statistique("stat1",55,30,40);
@@ -52,6 +53,10 @@ public class AventureDAO {
         Action a2 = new Action("ac2","Se rendre à Hurlevent", hm2);
         Action a3 = new Action("ac3","S'isoler dans la montagne", hm3);
 
+        actions1.add(a1);
+        actions1.add(a2);
+        actions1.add(a3);
+
         Peripetie peri01 = new Peripetie("peri1",
                 "Exilé de vos terre en quête de vengeance vous décidez de prendre la direction de ...",
                 true,
@@ -68,6 +73,11 @@ public class AventureDAO {
         Action a5 = new Action("ac5","Négocier avec le garde", hm5);
         Action a6 = new Action("ac6","Tuer le garde", hm6);
         Action a7 = new Action("ac7","Tuer le garde", hm7);
+
+        actions2.add(a4);
+        actions2.add(a5);
+        actions2.add(a6);
+        actions2.add(a7);
 
         Peripetie peri02 = new Peripetie("peri2",
                 "Arrivez devant Orgrimmar, la porte d'entrée est gardé par un garde ...",
@@ -99,6 +109,11 @@ public class AventureDAO {
         Action a9 = new Action("a9","Gravir la montage", hm9);
         Action a10 = new Action("a10","Gravir la montage", hm10);
         Action a11 = new Action("a11","Gravir la montage", hm11);
+
+        actions3.add(a8);
+        actions3.add(a9);
+        actions3.add(a10);
+        actions3.add(a11);
 
         Peripetie peri04 = new Peripetie("peri4",
                 "Vous essayer de gravir la montage ...",
@@ -132,9 +147,15 @@ public class AventureDAO {
         peripeties.add(peri10);
         peripeties.add(peri11);
 
-        Aventure aventure = new Aventure("av1","L'histoire de test","C'est le récit d'une histoire créer uniquement pour le test !",
+        Aventure aventure1 = new Aventure("av1","L'histoire de test","C'est le récit d'une histoire créer uniquement pour le test !",
                 peripeties,lstHeros,false);
 
-        return aventure;
+        Aventure aventure2 = new Aventure("av2","L'histoire de test 2","C'est le récit d'une histoire créer uniquement pour le test de la liste c'est incroyable gros !",
+                peripeties,lstHeros,false);
+
+        aventures.add(aventure1);
+        aventures.add(aventure2);
+
+        return aventures;
     }
 }

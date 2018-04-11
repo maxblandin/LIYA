@@ -6,4 +6,5 @@
     <string name="nouvelle_partie">Nouvelle partie</string>
     <string name="continuer">Continuer</string>
     <string name="quitter">Quitter</string>
+    <string name="choix_de_aventure">Choix de l\'aventure</string>
 </resources>

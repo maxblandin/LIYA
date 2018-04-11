@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.mgr.narratif.game.liya.vue.fragment.ChoixAventureFragment">
+
+    <TextView
+        android:id="@+id/lbl_choix_aventure"
+        android:text="@string/choix_de_aventure"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Title"/>
+
+    <ListView
+        android:id="@+id/lst_choix_aventure"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>
