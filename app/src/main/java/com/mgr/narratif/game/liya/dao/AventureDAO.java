@@ -147,10 +147,10 @@ public class AventureDAO {
         peripeties.add(peri10);
         peripeties.add(peri11);
 
-        Aventure aventure1 = new Aventure("av1","L'histoire de test","C'est le récit d'une histoire créer uniquement pour le test !",
+        Aventure aventure1 = new Aventure("av1","L'histoire de wow","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor diam nibh, eget elementum nulla consequat eget. Etiam sit amet dolor ex. Vestibulum non augue velit. Nullam vulputate, ipsum vel vehicula rhoncus, ipsum odio facilisis urna, at tristique velit mi sit amet turpis. Maecenas sagittis dolor at massa ultrices interdum. Morbi sapien nisl, congue in urna a, pretium lobortis erat. Proin consectetur velit sem, eu feugiat quam scelerisque quis. Fusce eget neque sed purus congue mollis.",
                 peripeties,lstHeros,false);
 
-        Aventure aventure2 = new Aventure("av2","L'histoire de test 2","C'est le récit d'une histoire créer uniquement pour le test de la liste c'est incroyable gros !",
+        Aventure aventure2 = new Aventure("av2","L'histoire de test 2","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor diam nibh, eget elementum nulla consequat eget. Etiam sit amet dolor ex. Vestibulum non augue velit. Nullam vulputate, ipsum vel vehicula rhoncus, ipsum odio facilisis urna, at tristique velit mi sit amet turpis. Maecenas sagittis dolor at massa ultrices interdum. Morbi sapien nisl, congue in urna a, pretium lobortis erat. Proin consectetur velit sem, eu feugiat quam scelerisque quis. Fusce eget neque sed purus congue mollis.",
                 peripeties,lstHeros,false);
 
         aventures.add(aventure1);
