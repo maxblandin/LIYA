@@ -1,7 +1,8 @@
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -10,9 +11,12 @@
         android:layout_weight="2">
 
         <ImageView
+            android:id="@+id/peripetie_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/paysage1"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
@@ -23,6 +27,8 @@
         android:layout_weight="6">
 
         <TextView
+            android:id="@+id/peripetie_description"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/texteAppli"
@@ -36,10 +42,13 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/peripetie_btn_actions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choisir une action"
+            android:text="@string/choisir_une_action"
             android:layout_alignParentBottom="true"/>
+
+
 
     </RelativeLayout>
 

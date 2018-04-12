@@ -9,6 +9,7 @@ import java.util.Map;
 public class Action {
     private String id;
     private String libelle;
+    private boolean isLancerDes;
     private Map<Integer,String> suite;
 
     public String getId() {
@@ -32,10 +33,18 @@ public class Action {
         this.suite = suite;
     }
 
+    public boolean isLancerDes() {
+        return isLancerDes;
+    }
+    public void setLancerDes(boolean lancerDes) {
+        isLancerDes = lancerDes;
+    }
+
     public Action() {}
-    public Action(String id, String libelle, Map<Integer,String> suite) {
+    public Action(String id, String libelle, boolean isLancerDes, Map<Integer,String> suite) {
         this.id = id;
         this.libelle = libelle;
+        this.isLancerDes = isLancerDes;
         this.suite = suite;
     }
 }

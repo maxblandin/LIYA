@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/popup_libelle_action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:layout_marginEnd="5dp"/>
+
+    <ImageView
+        android:id="@+id/popup_img_lancer_des"
+        android:layout_width="0dp"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        android:src="@drawable/paysage1"
+        tools:ignore="ContentDescription" />
+
+
+
+</LinearLayout>

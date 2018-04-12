@@ -11,7 +11,7 @@ public class Peripetie {
     private String description;
     private boolean isPrologue;
     private boolean isFin;
-    private boolean isLancerDes;
+    private String drawableImage;
     private List<Action> actions;
 
     public String getId() {
@@ -42,13 +42,6 @@ public class Peripetie {
         isFin = fin;
     }
 
-    public boolean isLancerDes() {
-        return isLancerDes;
-    }
-    public void setLancerDes(boolean lancerDes) {
-        isLancerDes = lancerDes;
-    }
-
     public List<Action> getActions() {
         return actions;
     }
@@ -56,13 +49,20 @@ public class Peripetie {
         this.actions = actions;
     }
 
+    public String getDrawableImage() {
+        return drawableImage;
+    }
+    public void setDrawableImage(String drawableImage) {
+        this.drawableImage = drawableImage;
+    }
+
     public Peripetie() {}
-    public Peripetie(String id, String description, boolean isPrologue, boolean isFin, boolean isLancerDes, List<Action> actions) {
+    public Peripetie(String id, String description, boolean isPrologue, boolean isFin, List<Action> actions, String drawableImage) {
         this.id = id;
         this.description = description;
         this.isPrologue = isPrologue;
         this.isFin = isFin;
-        this.isLancerDes = isLancerDes;
         this.actions = actions;
+        this.drawableImage = drawableImage;
     }
 }

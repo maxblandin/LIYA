@@ -9,15 +9,15 @@ import java.util.List;
 public class PeripetieService {
     private PeripetieDAO dao = new PeripetieDAO();
 
-    public List<Peripetie> recupererPeripeties(String idAventure){
-        return dao.getPeripeties(idAventure);
+    public List<Peripetie> recupererPeripeties(String idPeripetie){
+        return dao.getPeripeties(idPeripetie);
     }
 
-    public Peripetie recupererPeripetie(String idAventure,String idPeripetie){
-        return dao.getPeripetie(idAventure,idPeripetie);
+    public Peripetie recupererPeripetie(String idPeripetie){
+        return dao.getPeripetie(idPeripetie);
     }
 
-    public Peripetie recupererPrologue(String idAventure){
-        return dao.getPrologue(idAventure);
+    public Peripetie recupererPrologue(String idPeripetie){
+        return dao.getPrologue(idPeripetie);
     }
 }
