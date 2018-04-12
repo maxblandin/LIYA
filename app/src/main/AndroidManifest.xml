@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".vue.activity.ChoixAventureActivity" />
         <activity android:name=".vue.activity.ChoixHerosActivity" />
-        <activity android:name=".vue.activity.PeripetieActivity"></activity>
+        <activity android:name=".vue.activity.PeripetieActivity" />
+        <activity android:name=".vue.activity.ApplicationActivity">
+
+        </activity>
     </application>
 
 </manifest>
