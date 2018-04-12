@@ -42,8 +42,16 @@ public class ActionAdapter extends ArrayAdapter<Action> {
 
         Action action = getItem(position);
 
-        viewHolder.txtLibelle.setText(action.getLibelle());
-        viewHolder.imgLancerDes.setImageResource(R.drawable.bouton_continue_vierge);
+        if (action != null) {
+            viewHolder.txtLibelle.setText(action.getLibelle());
+            viewHolder.imgLancerDes.setImageResource(R.drawable.de_action);
+
+            if (action.isLancerDes()) {
+                viewHolder.imgLancerDes.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.imgLancerDes.setVisibility(View.GONE);
+            }
+        }
 
         return convertView;
     }

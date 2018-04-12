@@ -8,8 +8,10 @@ import android.widget.TextView;
 
 import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.model.Aventure;
+import com.mgr.narratif.game.liya.model.AventureEnCours;
 import com.mgr.narratif.game.liya.model.Heros;
 import com.mgr.narratif.game.liya.model.Peripetie;
+import com.mgr.narratif.game.liya.service.AventureEnCoursService;
 import com.mgr.narratif.game.liya.service.AventureService;
 import com.mgr.narratif.game.liya.service.PeripetieService;
 import com.mgr.narratif.game.liya.vue.fragment.ChoixAventureFragment;
@@ -20,7 +22,9 @@ import java.util.List;
 public class ChoixHerosActivity extends AppCompatActivity implements ChoixHerosFragment.OnChoixHerosListener {
     private AventureService aventureService = new AventureService();
     private PeripetieService peripetieService = new PeripetieService();
-    private Aventure aventure = null;
+    private AventureEnCoursService aventureEnCoursService = new AventureEnCoursService();
+    private Aventure aventure;
+    private Heros heros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,16 @@ public class ChoixHerosActivity extends AppCompatActivity implements ChoixHerosF
 
     @Override
     public void choisirHeros(Heros heros) {
+        this.heros = heros;
+        aventureEnCoursService.commencerAventure(aventure.getId(), peripetieService.recupererPrologue(aventure.getId()).getId(), heros.getId());
     }
 
     @Override
     public void commencerAventure() {
         Intent intent = new Intent(ChoixHerosActivity.this,PeripetieActivity.class);
         intent.putExtra("idPrologue",peripetieService.recupererPrologue(aventure.getId()).getId());
+        intent.putExtra("idAventure", aventure.getId());
+        intent.putExtra("idHeros", heros.getId());
         startActivity(intent);
     }
 

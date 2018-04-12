@@ -13,26 +13,26 @@ public class PeripetieDAO {
     public List<Peripetie> getPeripeties(String idAventure){
         List<Peripetie> peripeties =new ArrayList<>();
 
-        Map<Integer,String> hm1 = new HashMap<>();
-        Map<Integer,String> hm2 = new HashMap<>();
-        Map<Integer,String> hm3 = new HashMap<>();
-        Map<Integer,String> hm4 = new HashMap<>();
-        Map<Integer,String> hm5 = new HashMap<>();
-        Map<Integer,String> hm6 = new HashMap<>();
-        Map<Integer,String> hm7 = new HashMap<>();
-        Map<Integer,String> hm8 = new HashMap<>();
-        Map<Integer,String> hm9 = new HashMap<>();
-        Map<Integer,String> hm10 = new HashMap<>();
-        Map<Integer,String> hm11= new HashMap<>();
+        Map<ResultatDes,String> hm1 = new HashMap<>();
+        Map<ResultatDes,String> hm2 = new HashMap<>();
+        Map<ResultatDes,String> hm3 = new HashMap<>();
+        Map<ResultatDes,String> hm4 = new HashMap<>();
+        Map<ResultatDes,String> hm5 = new HashMap<>();
+        Map<ResultatDes,String> hm6 = new HashMap<>();
+        Map<ResultatDes,String> hm7 = new HashMap<>();
+        Map<ResultatDes,String> hm8 = new HashMap<>();
+        Map<ResultatDes,String> hm9 = new HashMap<>();
+        Map<ResultatDes,String> hm10 = new HashMap<>();
+        Map<ResultatDes,String> hm11= new HashMap<>();
 
-        hm1.put(ResultatDes.AUCUN.getResultat(),"peri02");
-        hm2.put(ResultatDes.AUCUN.getResultat(),"peri03");
-        hm3.put(ResultatDes.AUCUN.getResultat(),"peri04");
+        hm1.put(ResultatDes.AUCUN,"peri02");
+        hm2.put(ResultatDes.AUCUN,"peri03");
+        hm3.put(ResultatDes.AUCUN,"peri04");
 
         List<Action> actions1 = new ArrayList<>();
-        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false, hm1);
-        Action a2 = new Action("ac2","Se rendre à Hurlevent", false, hm2);
-        Action a3 = new Action("ac3","S'isoler dans la montagne", false, hm3);
+        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1);
+        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2);
+        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3);
 
         actions1.add(a1);
         actions1.add(a2);
@@ -45,16 +45,16 @@ public class PeripetieDAO {
                 actions1,
                 "paysage1.jpg");
 
-        hm4.put(ResultatDes.REUSSITE.getResultat(),"peri5");
-        hm5.put(ResultatDes.ECHEC.getResultat(),"peri6");
-        hm6.put(ResultatDes.REUSSITE.getResultat(),"peri7");
-        hm7.put(ResultatDes.ECHEC.getResultat(),"peri6");
+        hm4.put(ResultatDes.REUSSITE,"peri5");
+        hm5.put(ResultatDes.ECHEC,"peri6");
+        hm6.put(ResultatDes.REUSSITE,"peri7");
+        hm7.put(ResultatDes.ECHEC,"peri6");
 
         List<Action> actions2 = new ArrayList<>();
-        Action a4 = new Action("ac4","Négocier avec le garde", true, hm4);
-        Action a5 = new Action("ac5","Négocier avec le garde", true, hm5);
-        Action a6 = new Action("ac6","Tuer le garde", true, hm6);
-        Action a7 = new Action("ac7","Tuer le garde", true, hm7);
+        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4);
+        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5);
+        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6);
+        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7);
 
         actions2.add(a4);
         actions2.add(a5);
@@ -81,16 +81,16 @@ public class PeripetieDAO {
                 "Arrivez devant Hurlevent, la porte d'entrée est gardé par un garde ...",
                 false,false, actions2, "paysage1.jpg");
 
-        hm8.put(ResultatDes.REUSSITE.getResultat(),"peri8");
-        hm9.put(ResultatDes.ECHEC.getResultat(),"peri9");
-        hm10.put(ResultatDes.REUSSITE_CRITIQUE.getResultat(),"peri10");
-        hm11.put(ResultatDes.ECHEC_CRITIQUE.getResultat(),"peri11");
+        hm8.put(ResultatDes.REUSSITE,"peri8");
+        hm9.put(ResultatDes.ECHEC,"peri9");
+        hm10.put(ResultatDes.REUSSITE_CRITIQUE,"peri10");
+        hm11.put(ResultatDes.ECHEC_CRITIQUE,"peri11");
 
         List<Action> actions3 = new ArrayList<>();
-        Action a8 = new Action("a8","Gravir la montage", true, hm8);
-        Action a9 = new Action("a9","Gravir la montage", true, hm9);
-        Action a10 = new Action("a10","Gravir la montage", true, hm10);
-        Action a11 = new Action("a11","Gravir la montage", true, hm11);
+        Action a8 = new Action("a8","Gravir la montage", true,null, hm8);
+        Action a9 = new Action("a9","Gravir la montage", true,null, hm9);
+        Action a10 = new Action("a10","Gravir la montage", true,null, hm10);
+        Action a11 = new Action("a11","Gravir la montage", true,null, hm11);
 
         actions3.add(a8);
         actions3.add(a9);

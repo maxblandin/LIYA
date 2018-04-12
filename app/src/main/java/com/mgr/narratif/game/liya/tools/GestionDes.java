@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class GestionDes {
     // Score minimum possible au dés
-    private final int MIN_DES = 1;
+    private final static int MIN_DES = 1;
 
     public GestionDes() {}
 
@@ -18,7 +18,7 @@ public class GestionDes {
     Réussite critique = lancer de des inférieur au Taux de réussite critique (5% exemple sur un des 100 il faut un jet inférieeur ou égale à 5)
     Echec critique = lancer de des supérieur au Taux d'échec critique (5% exemple sur un des 100 il faut un jet supérieur ou égale à 96)
     * */
-    public Des lancerDes(FaceDes eDes, int valeurStatistique){
+    public static Des lancerDes(FaceDes eDes, int valeurStatistique){
         Des des = new Des();
 
         Random rand = new Random();
