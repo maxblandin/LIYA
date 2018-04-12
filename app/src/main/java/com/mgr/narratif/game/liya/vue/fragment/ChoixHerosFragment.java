@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.model.Heros;
+import com.mgr.narratif.game.liya.model.Peripetie;
 import com.mgr.narratif.game.liya.vue.adapter.HerosAdapter;
 
 import java.util.List;
@@ -33,6 +35,14 @@ public class ChoixHerosFragment extends Fragment {
         final HerosAdapter adapter = new HerosAdapter(mListener.getContext(),mListener.recupererListeHeros());
         lv.setAdapter(adapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mListener.choisirHeros(adapter.getItem(position));
+                mListener.commencerAventure();
+            }
+        });
+
         return v;
     }
 
@@ -50,6 +60,8 @@ public class ChoixHerosFragment extends Fragment {
     public interface OnChoixHerosListener{
         Context getContext();
         List<Heros> recupererListeHeros();
+        void choisirHeros(Heros heros);
+        void commencerAventure();
     }
 
 }

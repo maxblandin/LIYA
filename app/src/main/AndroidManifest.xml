@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".vue.activity.ChoixAventureActivity" />
-        <activity android:name=".vue.activity.ChoixHerosActivity"></activity>
+        <activity android:name=".vue.activity.ChoixHerosActivity" />
+        <activity android:name=".vue.activity.PeripetieActivity"></activity>
     </application>
 
 </manifest>

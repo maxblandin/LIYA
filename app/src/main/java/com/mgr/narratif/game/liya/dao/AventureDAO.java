@@ -61,6 +61,7 @@ public class AventureDAO {
                 "Exilé de vos terre en quête de vengeance vous décidez de prendre la direction de ...",
                 true,
                 false,
+                false,
                 actions1);
 
         hm4.put(ResultatDes.REUSSITE.getResultat(),"peri5");
@@ -81,23 +82,23 @@ public class AventureDAO {
 
         Peripetie peri02 = new Peripetie("peri2",
                 "Arrivez devant Orgrimmar, la porte d'entrée est gardé par un garde ...",
-                true,true,actions2);
+                false,false,true,actions2);
 
         Peripetie peri05 = new Peripetie("peri5",
                 "Le garde convaincu par votre discours vous ouvre la porte, vous rentrez dans la ville !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri06 = new Peripetie("peri6",
                 "Votre coup n'atteind pas le garde et il vous tue ... GAME OVER !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri07 = new Peripetie("peri7",
                 "Le garde mort, vous rentrez dans la ville !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri03 = new Peripetie("peri3",
                 "Arrivez devant Hurlevent, la porte d'entrée est gardé par un garde ...",
-                true,false, actions2);
+                false,false,false, actions2);
 
         hm8.put(ResultatDes.REUSSITE.getResultat(),"peri8");
         hm9.put(ResultatDes.ECHEC.getResultat(),"peri9");
@@ -117,23 +118,23 @@ public class AventureDAO {
 
         Peripetie peri04 = new Peripetie("peri4",
                 "Vous essayer de gravir la montage ...",
-                true, true,actions3);
+                false, false,true,actions3);
 
         Peripetie peri08 = new Peripetie("peri8",
                 "Vous gravissez la montage avec réussite !",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri09 = new Peripetie("peri9",
                 "Vous n'arrivez pas a vous hissez en haut de la montage, vous allez passer la nuit en bas ! ",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri10 = new Peripetie("peri10",
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri11 = new Peripetie("peri04",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
-                true, false,actions3);
+                false, true,false,actions3);
 
         peripeties.add(peri01);
         peripeties.add(peri02);
@@ -174,7 +175,6 @@ public class AventureDAO {
         lstHeros.add(h3);
 
         List<Peripetie> peripeties =new ArrayList<>();
-
         Map<Integer,String> hm1 = new HashMap<>();
         Map<Integer,String> hm2 = new HashMap<>();
         Map<Integer,String> hm3 = new HashMap<>();
@@ -204,6 +204,7 @@ public class AventureDAO {
                 "Exilé de vos terre en quête de vengeance vous décidez de prendre la direction de ...",
                 true,
                 false,
+                false,
                 actions1);
 
         hm4.put(ResultatDes.REUSSITE.getResultat(),"peri5");
@@ -224,23 +225,23 @@ public class AventureDAO {
 
         Peripetie peri02 = new Peripetie("peri2",
                 "Arrivez devant Orgrimmar, la porte d'entrée est gardé par un garde ...",
-                true,true,actions2);
+                false,false,true,actions2);
 
         Peripetie peri05 = new Peripetie("peri5",
                 "Le garde convaincu par votre discours vous ouvre la porte, vous rentrez dans la ville !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri06 = new Peripetie("peri6",
                 "Votre coup n'atteind pas le garde et il vous tue ... GAME OVER !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri07 = new Peripetie("peri7",
                 "Le garde mort, vous rentrez dans la ville !",
-                true,false,null);
+                false,false,false,null);
 
         Peripetie peri03 = new Peripetie("peri3",
                 "Arrivez devant Hurlevent, la porte d'entrée est gardé par un garde ...",
-                true,false, actions2);
+                false,false,false, actions2);
 
         hm8.put(ResultatDes.REUSSITE.getResultat(),"peri8");
         hm9.put(ResultatDes.ECHEC.getResultat(),"peri9");
@@ -260,23 +261,23 @@ public class AventureDAO {
 
         Peripetie peri04 = new Peripetie("peri4",
                 "Vous essayer de gravir la montage ...",
-                true, true,actions3);
+                false, false,true,actions3);
 
         Peripetie peri08 = new Peripetie("peri8",
                 "Vous gravissez la montage avec réussite !",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri09 = new Peripetie("peri9",
                 "Vous n'arrivez pas a vous hissez en haut de la montage, vous allez passer la nuit en bas ! ",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri10 = new Peripetie("peri10",
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
-                true, false,actions3);
+                false, true,false,actions3);
 
         Peripetie peri11 = new Peripetie("peri04",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
-                true, false,actions3);
+                false, true,false,actions3);
 
         peripeties.add(peri01);
         peripeties.add(peri02);
