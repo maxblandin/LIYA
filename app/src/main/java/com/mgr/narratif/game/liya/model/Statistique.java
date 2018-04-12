@@ -1,14 +1,11 @@
 package com.mgr.narratif.game.liya.model;
 
-/**
- * Created by mblandin2016 on 10/04/2018.
- */
+import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 
 public class Statistique {
     private String id;
-    private int pourcentagePhysique;
-    private int pourcentageMental;
-    private int pourcentageSocial;
+    private LibelleStat libelle;
+    private int pourcentage;
 
     public String getId() {
         return id;
@@ -17,32 +14,24 @@ public class Statistique {
         this.id = id;
     }
 
-    public int getPourcentagePhysique() {
-        return pourcentagePhysique;
+    public LibelleStat getLibelle() {
+        return libelle;
     }
-    public void setPourcentagePhysique(int pourcentagePhysique) {
-        this.pourcentagePhysique = pourcentagePhysique;
-    }
-
-    public int getPourcentageMental() {
-        return pourcentageMental;
-    }
-    public void setPourcentageMental(int pourcentageMental) {
-        this.pourcentageMental = pourcentageMental;
+    public void setLibelle(LibelleStat libelle) {
+        this.libelle = libelle;
     }
 
-    public int getPourcentageSocial() {
-        return pourcentageSocial;
+    public int getPourcentage() {
+        return pourcentage;
     }
-    public void setPourcentageSocial(int pourcentageSocial) {
-        this.pourcentageSocial = pourcentageSocial;
+    public void setPourcentage(int pourcentage) {
+        this.pourcentage = pourcentage;
     }
 
     public Statistique() {}
-    public Statistique(String id, int pourcentagePhysique, int pourcentageMental, int pourcentageSocial) {
+    public Statistique(String id, LibelleStat libelle, int pourcentage) {
         this.id = id;
-        this.pourcentagePhysique = pourcentagePhysique;
-        this.pourcentageMental = pourcentageMental;
-        this.pourcentageSocial = pourcentageSocial;
+        this.libelle = libelle;
+        this.pourcentage = pourcentage;
     }
 }

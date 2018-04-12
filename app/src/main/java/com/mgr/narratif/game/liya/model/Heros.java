@@ -2,6 +2,8 @@ package com.mgr.narratif.game.liya.model;
 
 import com.mgr.narratif.game.liya.enumeration.ClasseHeros;
 
+import java.util.List;
+
 /**
  * Created by mblandin2016 on 10/04/2018.
  */
@@ -11,7 +13,7 @@ public class Heros {
     private String nom;
     private String histoire;
     private ClasseHeros classe;
-    private Statistique statistique;
+    private List<Statistique> statistiques;
 
     public String getId() {
         return id;
@@ -41,19 +43,19 @@ public class Heros {
         this.classe = classe;
     }
 
-    public Statistique getStatistiques() {
-        return statistique;
+    public List<Statistique> getStatistiques() {
+        return statistiques;
     }
-    public void setStatistiques(Statistique statistiques) {
-        this.statistique = statistiques;
+    public void setStatistiques(List<Statistique> statistiques) {
+        this.statistiques = statistiques;
     }
 
     public Heros() {}
-    public Heros(String id, String nom, String histoire, ClasseHeros classe, Statistique statistique) {
+    public Heros(String id, String nom, String histoire, ClasseHeros classe, List<Statistique> statistiques) {
         this.id = id;
         this.nom = nom;
         this.histoire = histoire;
         this.classe = classe;
-        this.statistique = statistique;
+        this.statistiques = statistiques;
     }
 }

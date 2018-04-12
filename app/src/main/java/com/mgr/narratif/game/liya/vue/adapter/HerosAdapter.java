@@ -10,8 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.mgr.narratif.game.liya.R;
+import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 import com.mgr.narratif.game.liya.model.Aventure;
 import com.mgr.narratif.game.liya.model.Heros;
+import com.mgr.narratif.game.liya.model.Statistique;
 
 import java.util.List;
 
@@ -47,12 +49,21 @@ public class HerosAdapter extends ArrayAdapter<Heros>{
             viewHolder.lblNom.setText(heros.getNom());
             viewHolder.lblClasse.setText(heros.getClasse().toString());
             viewHolder.lblHistoire.setText(heros.getHistoire());
-            viewHolder.lblStatPhysique.setText(String.valueOf(heros.getStatistiques().getPourcentagePhysique()));
-            viewHolder.lblStatMental.setText(String.valueOf(heros.getStatistiques().getPourcentageMental()));
-            viewHolder.lblStatSocial.setText(String.valueOf(heros.getStatistiques().getPourcentageSocial()));
+
+            for(Statistique s : heros.getStatistiques()){
+                switch (s.getLibelle()){
+                    case PHYSIQUE:
+                        viewHolder.lblStatPhysique.setText(String.valueOf(s.getPourcentage()));
+                        break;
+                    case MENTAL:
+                        viewHolder.lblStatMental.setText(String.valueOf(s.getPourcentage()));
+                        break;
+                    case SOCIAL:
+                        viewHolder.lblStatSocial.setText(String.valueOf(s.getPourcentage()));
+                        break;
+                }
+            }
         }
-
-
         return convertView;
     }
 

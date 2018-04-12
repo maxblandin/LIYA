@@ -43,7 +43,7 @@ public class ActionAdapter extends ArrayAdapter<Action> {
         Action action = getItem(position);
 
         viewHolder.txtLibelle.setText(action.getLibelle());
-        viewHolder.imgLancerDes.setImageResource(R.drawable.bouton_new_game_vierge);
+        viewHolder.imgLancerDes.setImageResource(R.drawable.bouton_continue_vierge);
 
         return convertView;
     }

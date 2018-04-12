@@ -1,17 +1,15 @@
 package com.mgr.narratif.game.liya.model;
 
+import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 
 import java.util.Map;
-
-/**
- * Created by mblandin2016 on 10/04/2018.
- */
 
 public class Action {
     private String id;
     private String libelle;
     private boolean isLancerDes;
+    private LibelleStat statistique;
     private Map<ResultatDes,String> suite;
 
     public String getId() {
@@ -42,11 +40,19 @@ public class Action {
         isLancerDes = lancerDes;
     }
 
+    public LibelleStat getStatistique() {
+        return statistique;
+    }
+    public void setStatistique(LibelleStat statistique) {
+        this.statistique = statistique;
+    }
+
     public Action() {}
-    public Action(String id, String libelle, boolean isLancerDes, Map<ResultatDes,String> suite) {
+    public Action(String id, String libelle, boolean isLancerDes, LibelleStat statistique, Map<ResultatDes,String> suite) {
         this.id = id;
         this.libelle = libelle;
         this.isLancerDes = isLancerDes;
+        this.statistique = statistique;
         this.suite = suite;
     }
 }
