@@ -3,38 +3,35 @@ package com.mgr.narratif.game.liya.vue.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mgr.narratif.game.liya.R;
+import com.mgr.narratif.game.liya.model.Heros;
+import com.mgr.narratif.game.liya.vue.adapter.HerosAdapter;
+
+import java.util.List;
 
 public class ChoixHerosFragment extends Fragment {
-
     private OnChoixHerosListener mListener;
-
-    TextView lblNomHeros;
-    TextView lblClasseHeros;
-    TextView lblHistoireHeros;
-    TextView lblStatPhysique;
-    TextView lblStatMental;
-    TextView lblStatSocial;
+    ListView lv;
 
     public ChoixHerosFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_choix_heros, container, false);
 
-        lblNomHeros = v.findViewById(R.id.lbl_nom_heros);
-        lblClasseHeros = v.findViewById(R.id.lbl_classe_heros);
-        lblHistoireHeros = v.findViewById(R.id.lbl_histoire_heros);
-        lblStatPhysique = v.findViewById(R.id.lbl_stat_physique);
-        lblStatMental = v.findViewById(R.id.lbl_stat_mental);
-        lblStatSocial = v.findViewById(R.id.lbl_stat_social);
+        lv = v.findViewById(R.id.lst_choix_heros);
+
+        final HerosAdapter adapter = new HerosAdapter(mListener.getContext(),mListener.recupererListeHeros());
+        lv.setAdapter(adapter);
 
         return v;
     }
@@ -42,7 +39,7 @@ public class ChoixHerosFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(mListener instanceof OnChoixHerosListener){
+        if(context instanceof OnChoixHerosListener){
             mListener = (OnChoixHerosListener) context;
         }else{
             throw new RuntimeException(context.toString()
@@ -51,7 +48,8 @@ public class ChoixHerosFragment extends Fragment {
     }
 
     public interface OnChoixHerosListener{
-        int getIdAventure();
+        Context getContext();
+        List<Heros> recupererListeHeros();
     }
 
 }

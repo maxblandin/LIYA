@@ -7,4 +7,7 @@
     <string name="continuer">Continuer</string>
     <string name="quitter">Quitter</string>
     <string name="choix_de_aventure">Choix de l\'aventure</string>
+    <string name="physique">Physique :</string>
+    <string name="mental">Mental :</string>
+    <string name="social">Social :</string>
 </resources>

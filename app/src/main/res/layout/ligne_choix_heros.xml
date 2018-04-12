@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -24,7 +25,7 @@
         <TextView
             android:id="@+id/lbl_histoire_heros"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -33,20 +34,58 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lbl_stat_physique"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/lbl_stat_mental"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/physique"
+                android:id="@+id/lbl_stat_physique"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/lbl_stat_social"
+            <TextView
+                android:id="@+id/lbl_pourcentage_physique"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="@string/mental"
+                android:id="@+id/lbl_stat_mental"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/lbl_pourcentage_mental"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="@string/social"
+                android:id="@+id/lbl_stat_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/lbl_pourcentage_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"/>
+        </RelativeLayout>
 
     </LinearLayout>
 </LinearLayout>
