@@ -1,0 +1,46 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/texteAppli"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget urna id metus placerat lobortis. Phasellus sit amet tortor id turpis sagittis aliquam. Suspendisse interdum nulla id libero sodales, non consectetur libero semper. Vestibulum egestas dui in metus iaculis dictum. Fusce et scelerisque dui, sed tempus nisl. In consequat varius aliquam. Mauris laoreet finibus leo, id feugiat massa. Pellentesque sapien arcu, ultrices ut tempor ut, imperdiet sed nisl. Praesent vehicula ultrices urna. Donec ut leo enim. Vestibulum odio dolor, luctus nec diam ac, convallis venenatis urna."/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choisir une action"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
