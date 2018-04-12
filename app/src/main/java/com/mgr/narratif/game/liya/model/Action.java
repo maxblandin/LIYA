@@ -1,5 +1,7 @@
 package com.mgr.narratif.game.liya.model;
 
+import com.mgr.narratif.game.liya.enumeration.ResultatDes;
+
 import java.util.Map;
 
 /**
@@ -10,7 +12,7 @@ public class Action {
     private String id;
     private String libelle;
     private boolean isLancerDes;
-    private Map<Integer,String> suite;
+    private Map<ResultatDes,String> suite;
 
     public String getId() {
         return id;
@@ -26,10 +28,10 @@ public class Action {
         this.libelle = libelle;
     }
 
-    public Map<Integer, String> getSuite() {
+    public Map<ResultatDes, String> getSuite() {
         return suite;
     }
-    public void setSuite(Map<Integer, String> suite) {
+    public void setSuite(Map<ResultatDes, String> suite) {
         this.suite = suite;
     }
 
@@ -41,7 +43,7 @@ public class Action {
     }
 
     public Action() {}
-    public Action(String id, String libelle, boolean isLancerDes, Map<Integer,String> suite) {
+    public Action(String id, String libelle, boolean isLancerDes, Map<ResultatDes,String> suite) {
         this.id = id;
         this.libelle = libelle;
         this.isLancerDes = isLancerDes;
