@@ -51,6 +51,7 @@ public class ApplicationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            creerSQLite(aventure);
             OuvrirEcranMenu();
         }
     }

@@ -1,9 +1,5 @@
 package com.mgr.narratif.game.liya.model;
 
-/**
- * Created by mblandin2016 on 10/04/2018.
- */
-
 public class AventureEnCours {
     private String idAventure;
     private String idPeripetie;

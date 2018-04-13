@@ -23,11 +23,12 @@ public class MenuActivity extends AppCompatActivity implements MenuFragment.OnMe
 
     @Override
     public void continuerPartie() {
-
+        Intent intent = new Intent(MenuActivity.this,ContinuerActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void quitterApplication() {
-
+        finish();
     }
 }

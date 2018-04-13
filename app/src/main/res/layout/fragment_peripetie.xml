@@ -31,8 +31,7 @@
             android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/texteAppli"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget urna id metus placerat lobortis. Phasellus sit amet tortor id turpis sagittis aliquam. Suspendisse interdum nulla id libero sodales, non consectetur libero semper. Vestibulum egestas dui in metus iaculis dictum. Fusce et scelerisque dui, sed tempus nisl. In consequat varius aliquam. Mauris laoreet finibus leo, id feugiat massa. Pellentesque sapien arcu, ultrices ut tempor ut, imperdiet sed nisl. Praesent vehicula ultrices urna. Donec ut leo enim. Vestibulum odio dolor, luctus nec diam ac, convallis venenatis urna."/>
+            style="@style/texteAppli"/>
 
     </LinearLayout>
 

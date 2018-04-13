@@ -11,4 +11,6 @@
     <string name="mental">Mental :</string>
     <string name="social">Social :</string>
     <string name="choisir_une_action">Choisir une action</string>
+    <string name="heros">Heros :</string>
+    <string name="aventure_a_continuer">Aventure à continuer</string>
 </resources>

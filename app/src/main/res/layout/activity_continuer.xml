@@ -6,10 +6,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <fragment
-        android:id="@+id/fragment_peripetie"
+        android:id="@+id/fragment_continuer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.mgr.narratif.game.liya.vue.fragment.PeripetieFragment">
+        class="com.mgr.narratif.game.liya.vue.fragment.ContinuerFragment"></fragment>
 
-    </fragment>
 </LinearLayout>
