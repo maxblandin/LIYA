@@ -1,6 +1,7 @@
 package com.mgr.narratif.game.liya.dao;
 
 import com.mgr.narratif.game.liya.enumeration.ClasseHeros;
+import com.mgr.narratif.game.liya.enumeration.FaceDes;
 import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 import com.mgr.narratif.game.liya.model.Action;
@@ -70,14 +71,14 @@ public class AventureDAO {
         Map<ResultatDes,String> hm10 = new HashMap<>();
         Map<ResultatDes,String> hm11= new HashMap<>();
 
-        hm1.put(ResultatDes.AUCUN,"peri02");
-        hm2.put(ResultatDes.AUCUN,"peri03");
-        hm3.put(ResultatDes.AUCUN,"peri04");
+        hm1.put(ResultatDes.AUCUN,"peri2");
+        hm2.put(ResultatDes.AUCUN,"peri3");
+        hm3.put(ResultatDes.AUCUN,"peri4");
 
         List<Action> actions1 = new ArrayList<>();
-        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1);
-        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2);
-        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3);
+        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1, null);
+        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2, null);
+        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3, null);
 
         actions1.add(a1);
         actions1.add(a2);
@@ -96,10 +97,10 @@ public class AventureDAO {
         hm7.put(ResultatDes.ECHEC,"peri6");
 
         List<Action> actions2 = new ArrayList<>();
-        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4);
-        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5);
-        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6);
-        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7);
+        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4, FaceDes.FACE100);
+        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5, FaceDes.FACE100);
+        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6, FaceDes.FACE100);
+        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7, FaceDes.FACE100);
 
         actions2.add(a4);
         actions2.add(a5);
@@ -132,10 +133,10 @@ public class AventureDAO {
         hm11.put(ResultatDes.ECHEC_CRITIQUE,"peri11");
 
         List<Action> actions3 = new ArrayList<>();
-        Action a8 = new Action("a8","Gravir la montage", true,null, hm8);
-        Action a9 = new Action("a9","Gravir la montage", true,null, hm9);
-        Action a10 = new Action("a10","Gravir la montage", true,null, hm10);
-        Action a11 = new Action("a11","Gravir la montage", true,null, hm11);
+        Action a8 = new Action("a8","Gravir la montage", true,null, hm8, FaceDes.FACE100);
+        Action a9 = new Action("a9","Gravir la montage", true,null, hm9, FaceDes.FACE100);
+        Action a10 = new Action("a10","Gravir la montage", true,null, hm10, FaceDes.FACE100);
+        Action a11 = new Action("a11","Gravir la montage", true,null, hm11, FaceDes.FACE100);
 
         actions3.add(a8);
         actions3.add(a9);
@@ -158,7 +159,7 @@ public class AventureDAO {
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
                 false, true,actions3, "paysage1.jpg");
 
-        Peripetie peri11 = new Peripetie("peri04",
+        Peripetie peri11 = new Peripetie("peri11",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
                 false, true,actions3, "paysage1.jpg");
 
@@ -239,14 +240,14 @@ public class AventureDAO {
         Map<ResultatDes,String> hm10 = new HashMap<>();
         Map<ResultatDes,String> hm11= new HashMap<>();
 
-        hm1.put(ResultatDes.AUCUN,"peri02");
-        hm2.put(ResultatDes.AUCUN,"peri03");
-        hm3.put(ResultatDes.AUCUN,"peri04");
+        hm1.put(ResultatDes.AUCUN,"peri2");
+        hm2.put(ResultatDes.AUCUN,"peri3");
+        hm3.put(ResultatDes.AUCUN,"peri4");
 
         List<Action> actions1 = new ArrayList<>();
-        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1);
-        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2);
-        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3);
+        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1, null);
+        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2, null);
+        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3, null);
 
         actions1.add(a1);
         actions1.add(a2);
@@ -265,10 +266,10 @@ public class AventureDAO {
         hm7.put(ResultatDes.ECHEC,"peri6");
 
         List<Action> actions2 = new ArrayList<>();
-        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4);
-        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5);
-        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6);
-        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7);
+        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4, FaceDes.FACE100);
+        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5, FaceDes.FACE100);
+        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6, FaceDes.FACE100);
+        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7, FaceDes.FACE100);
 
         actions2.add(a4);
         actions2.add(a5);
@@ -301,10 +302,10 @@ public class AventureDAO {
         hm11.put(ResultatDes.ECHEC_CRITIQUE,"peri11");
 
         List<Action> actions3 = new ArrayList<>();
-        Action a8 = new Action("a8","Gravir la montage", true,null, hm8);
-        Action a9 = new Action("a9","Gravir la montage", true,null, hm9);
-        Action a10 = new Action("a10","Gravir la montage", true,null, hm10);
-        Action a11 = new Action("a11","Gravir la montage", true,null, hm11);
+        Action a8 = new Action("a8","Gravir la montage", true,null, hm8, FaceDes.FACE100);
+        Action a9 = new Action("a9","Gravir la montage", true,null, hm9, FaceDes.FACE100);
+        Action a10 = new Action("a10","Gravir la montage", true,null, hm10, FaceDes.FACE100);
+        Action a11 = new Action("a11","Gravir la montage", true,null, hm11, FaceDes.FACE100);
 
         actions3.add(a8);
         actions3.add(a9);
@@ -327,7 +328,7 @@ public class AventureDAO {
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
                 false, true,actions3, "paysage1.jpg");
 
-        Peripetie peri11 = new Peripetie("peri04",
+        Peripetie peri11 = new Peripetie("peri11",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
                 false, true,actions3, "paysage1.jpg");
 

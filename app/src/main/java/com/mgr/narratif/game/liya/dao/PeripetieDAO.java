@@ -1,5 +1,7 @@
 package com.mgr.narratif.game.liya.dao;
 
+import com.mgr.narratif.game.liya.enumeration.FaceDes;
+import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 import com.mgr.narratif.game.liya.model.Action;
 import com.mgr.narratif.game.liya.model.Peripetie;
@@ -25,14 +27,14 @@ public class PeripetieDAO {
         Map<ResultatDes,String> hm10 = new HashMap<>();
         Map<ResultatDes,String> hm11= new HashMap<>();
 
-        hm1.put(ResultatDes.AUCUN,"peri02");
-        hm2.put(ResultatDes.AUCUN,"peri03");
-        hm3.put(ResultatDes.AUCUN,"peri04");
+        hm1.put(ResultatDes.AUCUN,"peri2");
+        hm2.put(ResultatDes.AUCUN,"peri3");
+        hm3.put(ResultatDes.AUCUN,"peri4");
 
         List<Action> actions1 = new ArrayList<>();
-        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1);
-        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2);
-        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3);
+        Action a1 = new Action("ac1", "Se rendre à Ogrimmar", false,null, hm1, null);
+        Action a2 = new Action("ac2","Se rendre à Hurlevent", false,null, hm2, null);
+        Action a3 = new Action("ac3","S'isoler dans la montagne", false, null,hm3, null);
 
         actions1.add(a1);
         actions1.add(a2);
@@ -46,20 +48,16 @@ public class PeripetieDAO {
                 "paysage1.jpg");
 
         hm4.put(ResultatDes.REUSSITE,"peri5");
+        hm4.put(ResultatDes.ECHEC,"peri6");
+        hm5.put(ResultatDes.REUSSITE,"peri7");
         hm5.put(ResultatDes.ECHEC,"peri6");
-        hm6.put(ResultatDes.REUSSITE,"peri7");
-        hm7.put(ResultatDes.ECHEC,"peri6");
 
         List<Action> actions2 = new ArrayList<>();
-        Action a4 = new Action("ac4","Négocier avec le garde", true,null, hm4);
-        Action a5 = new Action("ac5","Négocier avec le garde", true,null, hm5);
-        Action a6 = new Action("ac6","Tuer le garde", true,null, hm6);
-        Action a7 = new Action("ac7","Tuer le garde", true,null, hm7);
+        Action a4 = new Action("ac4","Négocier avec le garde", true, LibelleStat.SOCIAL, hm4, FaceDes.FACE100);
+        Action a6 = new Action("ac6","Tuer le garde", true,LibelleStat.PHYSIQUE, hm5, FaceDes.FACE100);
 
         actions2.add(a4);
-        actions2.add(a5);
         actions2.add(a6);
-        actions2.add(a7);
 
         Peripetie peri02 = new Peripetie("peri2",
                 "Arrivez devant Orgrimmar, la porte d'entrée est gardé par un garde ...",
@@ -81,21 +79,15 @@ public class PeripetieDAO {
                 "Arrivez devant Hurlevent, la porte d'entrée est gardé par un garde ...",
                 false,false, actions2, "paysage1.jpg");
 
-        hm8.put(ResultatDes.REUSSITE,"peri8");
-        hm9.put(ResultatDes.ECHEC,"peri9");
-        hm10.put(ResultatDes.REUSSITE_CRITIQUE,"peri10");
-        hm11.put(ResultatDes.ECHEC_CRITIQUE,"peri11");
+        hm6.put(ResultatDes.REUSSITE,"peri8");
+        hm6.put(ResultatDes.ECHEC,"peri9");
+        hm6.put(ResultatDes.REUSSITE_CRITIQUE,"peri10");
+        hm6.put(ResultatDes.ECHEC_CRITIQUE,"peri11");
 
         List<Action> actions3 = new ArrayList<>();
-        Action a8 = new Action("a8","Gravir la montage", true,null, hm8);
-        Action a9 = new Action("a9","Gravir la montage", true,null, hm9);
-        Action a10 = new Action("a10","Gravir la montage", true,null, hm10);
-        Action a11 = new Action("a11","Gravir la montage", true,null, hm11);
+        Action a8 = new Action("a8","Gravir la montage", true,LibelleStat.PHYSIQUE, hm6, FaceDes.FACE100);
 
         actions3.add(a8);
-        actions3.add(a9);
-        actions3.add(a10);
-        actions3.add(a11);
 
         Peripetie peri04 = new Peripetie("peri4",
                 "Vous essayer de gravir la montage ...",
@@ -113,7 +105,7 @@ public class PeripetieDAO {
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
                 false, true,actions3, "paysage1.jpg");
 
-        Peripetie peri11 = new Peripetie("peri04",
+        Peripetie peri11 = new Peripetie("peri11",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
                 false, true,actions3, "paysage1.jpg");
 

@@ -2,6 +2,8 @@ package com.mgr.narratif.game.liya.model;
 
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 
+import java.util.UUID;
+
 /**
  * Created by mblandin2016 on 10/04/2018.
  */
@@ -56,7 +58,9 @@ public class Historique {
         this.resultat = resultat;
     }
 
-    public Historique() {}
+    public Historique() {
+        this.id = UUID.randomUUID().toString();
+    }
     public Historique(String id, String idAventure, String idHeros, String idPeripetie, String idAction, ResultatDes resultat) {
         this.id = id;
         this.idAventure = idAventure;

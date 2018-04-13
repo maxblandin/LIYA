@@ -47,7 +47,10 @@ public class ChoixHerosActivity extends AppCompatActivity implements ChoixHerosF
     @Override
     public void choisirHeros(Heros heros) {
         this.heros = heros;
-        aventureEnCoursService.commencerAventure(aventure.getId(), peripetieService.recupererPrologue(aventure.getId()).getId(), heros.getId());
+        aventureEnCoursService.commencerAventure(
+                aventure.getId(),
+                peripetieService.recupererPrologue(aventure.getId()).getId(),
+                heros.getId());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.mgr.narratif.game.liya.model;
 
+import com.mgr.narratif.game.liya.enumeration.FaceDes;
 import com.mgr.narratif.game.liya.enumeration.LibelleStat;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 
@@ -11,6 +12,7 @@ public class Action {
     private boolean isLancerDes;
     private LibelleStat statistique;
     private Map<ResultatDes,String> suite;
+    private FaceDes de;
 
     public String getId() {
         return id;
@@ -47,12 +49,20 @@ public class Action {
         this.statistique = statistique;
     }
 
+    public FaceDes getDe() {
+        return de;
+    }
+    public void setDe(FaceDes de) {
+        this.de = de;
+    }
+
     public Action() {}
-    public Action(String id, String libelle, boolean isLancerDes, LibelleStat statistique, Map<ResultatDes,String> suite) {
+    public Action(String id, String libelle, boolean isLancerDes, LibelleStat statistique, Map<ResultatDes,String> suite, FaceDes de) {
         this.id = id;
         this.libelle = libelle;
         this.isLancerDes = isLancerDes;
         this.statistique = statistique;
         this.suite = suite;
+        this.de = de;
     }
 }

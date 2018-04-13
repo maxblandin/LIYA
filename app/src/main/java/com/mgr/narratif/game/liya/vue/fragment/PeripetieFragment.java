@@ -29,6 +29,7 @@ import com.mgr.narratif.game.liya.model.Statistique;
 import com.mgr.narratif.game.liya.tools.GestionDes;
 import com.mgr.narratif.game.liya.vue.adapter.ActionAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -45,6 +46,9 @@ public class PeripetieFragment extends Fragment {
     View popupActions;
     private Heros heros;
     private Peripetie peripetie;
+
+    private final PopupWindow popupWindow = new PopupWindow(popupActions,
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
     public PeripetieFragment() {
         // Required empty public constructor
@@ -66,6 +70,7 @@ public class PeripetieFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_peripetie, container, false);
 
+        // Alimentation des champs de la vue
         txtDescription = v.findViewById(R.id.peripetie_description);
         imgPeripetie   = v.findViewById(R.id.peripetie_img);
         btnAction      = v.findViewById(R.id.peripetie_btn_actions);
@@ -83,6 +88,9 @@ public class PeripetieFragment extends Fragment {
         return v;
     }
 
+    /**
+     * Permet d'actualiser les champs de l'écran, utilise la propriété Peripetie du fragment
+     */
     public void actualiserPeripetie(){
         txtDescription.setText(peripetie.getDescription());
 
@@ -97,55 +105,92 @@ public class PeripetieFragment extends Fragment {
                 )
         );
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                montrerPopup(v);
-            }
-        });
+        // Si la péripetie actuelle est la dernière
+        if (peripetie.isFin()) {
+            btnAction.setVisibility(View.GONE);
+        } else {
+            btnAction.setVisibility(View.VISIBLE);
+            btnAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    montrerPopup(v);
+                }
+            });
+        }
     }
 
+    /**
+     * Permet d'afficher la popup contenant les actions
+     * @param view La vue de base sur la quelle la popup viendra s'afficher
+     */
     public void montrerPopup(View view) {
 
-        PopupWindow popupWindow = new PopupWindow(popupActions,
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
+        // ListView contenant les actions
         final ListView actions = popupActions.findViewById(R.id.popup_liste_action);
 
+        // On lui donne la liste d'actions de la peripetie qu'on récupère via getActions()
         ActionAdapter adapter = new ActionAdapter(mListener.getContext(), mListener.getActions());
         actions.setAdapter(adapter);
 
+        // Action lors du choix sur la popup
         actions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // On récupère l'action, on check si un lancer de dé est à faire
                 Action action = (Action) actions.getItemAtPosition(position);
-                Des des;
+                Des de = null;
                 String idSuite = null;
 
+                // On effectue le lancer de dé (ou non)
                 if (action.isLancerDes()) {
-                    des = lancerDe(action);
-                    idSuite = action.getSuite().get(des.getType());
+                    de = lancerDe(action);
+                    idSuite = action.getSuite().get(de.getType());
                 } else {
                     idSuite = action.getSuite().get(ResultatDes.AUCUN);
                 }
 
-                actualiserPeripetie();
+                mListener.sauvegarderAventure(action, de);
+
+                // Ici on peut ajouter le fait de relancer
+                mListener.getPeripetieSuivante(action, de);
             }
         });
 
         popupWindow.setFocusable(true);
 
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-
+        // On lui donne l'endroit ou s'afficher
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
     }
 
+    /**
+     * Attend la réponse du service de péripetie pour actualiser l'affichage
+     * @param peripetie La peripetie à afficher
+     */
+    public void afficherPeripetie(Peripetie peripetie) {
+        // Récupération de la péripetie du service
+        this.peripetie = peripetie;
+
+        // On actualise la péripetie
+        actualiserPeripetie();
+
+        // On cache la popup de choix d'action
+        popupWindow.dismiss();
+    }
+
+    /**
+     * Lancement des dés lors d'une action
+     * @param action L'action choisie sur l'écran
+     * @return Des le dé contenant le résultat et le type de résultat (normal, echec, etc.)
+     */
     public Des lancerDe(Action action) {
+        // On réalise le lancer de dés suivant la stat demandé
         Des resultat;
         Statistique stat = null;
 
+        // Les statistiques sont récupérer de l'Enum des stats
         switch (action.getStatistique()) {
+            // Jet de dés avec la caractéristique physique
             case PHYSIQUE:
                 stat = null;
                 for (Statistique s : heros.getStatistiques()) {
@@ -155,6 +200,7 @@ public class PeripetieFragment extends Fragment {
                     }
                 }
                 break;
+            // Jet de dés avec la caractéristique mental
             case MENTAL:
                 stat = null;
                 for (Statistique s : heros.getStatistiques()) {
@@ -164,6 +210,7 @@ public class PeripetieFragment extends Fragment {
                     }
                 }
                 break;
+            // Jet de dés avec la caractéristique social
             case SOCIAL:
                 stat = null;
                 for (Statistique s : heros.getStatistiques()) {
@@ -175,8 +222,10 @@ public class PeripetieFragment extends Fragment {
                 break;
         }
 
+        // On lance les dés
         resultat = GestionDes.lancerDes(FaceDes.FACE100, stat.getPourcentage());
 
+        // Le résultat est le dés contenant le chiffre obtenu et le type de resultat (echec, normal, etc.)
         return resultat;
     }
 
@@ -185,7 +234,8 @@ public class PeripetieFragment extends Fragment {
         List<Action> getActions();
         Peripetie getPeripetie();
         Heros getHeros();
-        void sauvegarderAventure(Action action);
+        void sauvegarderAventure(Action action, Des de);
+        void getPeripetieSuivante(Action action, Des de);
     }
 
 }
