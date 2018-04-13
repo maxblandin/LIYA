@@ -9,12 +9,24 @@
 
     <style name="texteAppli">
         <item name="android:fontFamily">@font/breamcatcher</item>
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="titreAppli">
         <item name="android:fontFamily">@font/bebasneue_regular</item>
-        <item name="android:textSize">26dp</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="resultatDesLibelle">
+        <item name="android:fontFamily">@font/bebasneue_regular</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/ecritureResDes</item>
+    </style>
+
+    <style name="resultatDes">
+        <item name="android:fontFamily">@font/breamcatcher</item>
+        <item name="android:textSize">100sp</item>
+        <item name="android:textColor">@color/resultatDes</item>
     </style>
 
 </resources>

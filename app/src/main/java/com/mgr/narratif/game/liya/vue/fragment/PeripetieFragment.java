@@ -2,7 +2,6 @@ package com.mgr.narratif.game.liya.vue.fragment;
 
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -29,9 +28,6 @@ import com.mgr.narratif.game.liya.model.Statistique;
 import com.mgr.narratif.game.liya.tools.GestionDes;
 import com.mgr.narratif.game.liya.vue.adapter.ActionAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -46,9 +42,7 @@ public class PeripetieFragment extends Fragment {
     View popupActions;
     private Heros heros;
     private Peripetie peripetie;
-
-    private final PopupWindow popupWindow = new PopupWindow(popupActions,
-            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    private PopupWindow popupWindow;
 
     public PeripetieFragment() {
         // Required empty public constructor
@@ -70,6 +64,9 @@ public class PeripetieFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_peripetie, container, false);
 
+        // On envoie l'instance du fragment à l'activité (je crois que c'est moche mais ça marche)
+        mListener.envoyerFragment(this);
+
         // Alimentation des champs de la vue
         txtDescription = v.findViewById(R.id.peripetie_description);
         imgPeripetie   = v.findViewById(R.id.peripetie_img);
@@ -77,13 +74,10 @@ public class PeripetieFragment extends Fragment {
         popupActions   = inflater.inflate(R.layout.popup_action, container, false);
 
         // On récupère la Peripetie pour alimenté les champs de l'écran
-        peripetie = mListener.getPeripetie();
+        mListener.getPeripetie();
 
         // On récupère le héros pour le traitement avec les stats des lancés de dés
         heros = mListener.getHeros();
-
-        // Première instanciation de l'écran
-        actualiserPeripetie();
 
         return v;
     }
@@ -113,7 +107,7 @@ public class PeripetieFragment extends Fragment {
             btnAction.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    montrerPopup(v);
+                    montrerPopupAction(v);
                 }
             });
         }
@@ -123,13 +117,16 @@ public class PeripetieFragment extends Fragment {
      * Permet d'afficher la popup contenant les actions
      * @param view La vue de base sur la quelle la popup viendra s'afficher
      */
-    public void montrerPopup(View view) {
+    public void montrerPopupAction(View view) {
+
+        popupWindow = new PopupWindow(popupActions,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         // ListView contenant les actions
         final ListView actions = popupActions.findViewById(R.id.popup_liste_action);
 
         // On lui donne la liste d'actions de la peripetie qu'on récupère via getActions()
-        ActionAdapter adapter = new ActionAdapter(mListener.getContext(), mListener.getActions());
+        ActionAdapter adapter = new ActionAdapter(mListener.getContext(), peripetie.getActions());
         actions.setAdapter(adapter);
 
         // Action lors du choix sur la popup
@@ -174,8 +171,9 @@ public class PeripetieFragment extends Fragment {
         // On actualise la péripetie
         actualiserPeripetie();
 
-        // On cache la popup de choix d'action
-        popupWindow.dismiss();
+        if (popupWindow != null) {
+            popupWindow.dismiss();
+        }
     }
 
     /**
@@ -231,11 +229,11 @@ public class PeripetieFragment extends Fragment {
 
     public interface OnPeripetieListener {
         Context getContext();
-        List<Action> getActions();
-        Peripetie getPeripetie();
+        void getPeripetie();
         Heros getHeros();
         void sauvegarderAventure(Action action, Des de);
         void getPeripetieSuivante(Action action, Des de);
+        void envoyerFragment(PeripetieFragment peripetieFragment);
     }
 
 }

@@ -1,6 +1,5 @@
 package com.mgr.narratif.game.liya.vue.activity;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,18 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.dto.Des;
-import com.mgr.narratif.game.liya.enumeration.FaceDes;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 import com.mgr.narratif.game.liya.model.Action;
-import com.mgr.narratif.game.liya.model.AventureEnCours;
 import com.mgr.narratif.game.liya.model.Heros;
 import com.mgr.narratif.game.liya.model.Peripetie;
-import com.mgr.narratif.game.liya.model.Statistique;
 import com.mgr.narratif.game.liya.service.AventureEnCoursService;
 import com.mgr.narratif.game.liya.service.HerosService;
 import com.mgr.narratif.game.liya.service.HistoriqueService;
 import com.mgr.narratif.game.liya.service.PeripetieService;
-import com.mgr.narratif.game.liya.tools.GestionDes;
 import com.mgr.narratif.game.liya.vue.fragment.PeripetieFragment;
 
 import java.util.List;
@@ -34,6 +29,7 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
     private String idPeripetie;
     private String idPeripetieSuite;
     private Heros heros;
+    private PeripetieFragment peripetieFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +59,9 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
     }
 
     @Override
-    public List<Action> getActions() {
-        return peripetieService.recupererPeripetie(idPeripetie).getActions();
-    }
-
-    @Override
-    public Peripetie getPeripetie() {
-        return peripetieService.recupererPeripetie(idPeripetie);
+    public void getPeripetie() {
+        PeripetieAsyncTask pat = new PeripetieAsyncTask();
+        pat.execute();
     }
 
     @Override
@@ -90,7 +82,11 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
             @Override
             public void run() {
                 aventureEnCoursService.continuerAventure(idAventure, idPeripetieSuite);
-                historiqueService.ajouterHistorique(idAventure, heros.getId(), idPeripetieSuite, action.getId(), de.getType());
+                if (de != null) {
+                    historiqueService.ajouterHistorique(idAventure, heros.getId(), idPeripetieSuite, action.getId(), de.getType());
+                } else {
+                    historiqueService.ajouterHistorique(idAventure, heros.getId(), idPeripetieSuite, action.getId(), ResultatDes.AUCUN);
+                }
             }
         }).start();
 
@@ -110,18 +106,22 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         pat.execute();
     }
 
+    @Override
+    public void envoyerFragment(PeripetieFragment peripetieFragment) {
+        this.peripetieFragment = peripetieFragment;
+    }
+
     private class PeripetieAsyncTask extends AsyncTask<Void, Void, Peripetie> {
 
         @Override
         protected Peripetie doInBackground(Void... voids) {
-            Peripetie peripetie = peripetieService.recupererPeripetie(idPeripetie);
-            return peripetie;
+            return peripetieService.recupererPeripetie(idPeripetie);
         }
 
         @Override
         protected void onPostExecute(Peripetie peripetie) {
             super.onPostExecute(peripetie);
-
+            peripetieFragment.afficherPeripetie(peripetie);
         }
     }
 
