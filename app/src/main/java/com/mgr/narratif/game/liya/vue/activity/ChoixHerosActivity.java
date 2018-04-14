@@ -1,7 +1,9 @@
 package com.mgr.narratif.game.liya.vue.activity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -32,6 +34,19 @@ public class ChoixHerosActivity extends AppCompatActivity implements ChoixHerosF
         recupererIntentAventure();
 
         setContentView(R.layout.activity_choix_heros);
+
+        /* Pour finir l'activité quand on veut, le BroadcastReceiver permet
+         * de réalisé des actions sur une activité sans y être si elle est ouverte */
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("finish")) {
+                    finish();
+                }
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("finish"));
     }
 
     @Override

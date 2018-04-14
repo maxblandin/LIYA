@@ -42,13 +42,33 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/peripetie_btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"/>
+
+        <Button
             android:id="@+id/peripetie_btn_actions"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choisir_une_action"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"/>
 
-
+        <TextView
+            android:id="@+id/peripetie_fin_aventure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fin_aventure"
+            style="@style/texteAppli"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

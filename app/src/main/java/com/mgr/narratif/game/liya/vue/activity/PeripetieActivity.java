@@ -1,5 +1,6 @@
 package com.mgr.narratif.game.liya.vue.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,16 +11,14 @@ import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.dto.Des;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 import com.mgr.narratif.game.liya.model.Action;
-import com.mgr.narratif.game.liya.model.AventureEnCours;
 import com.mgr.narratif.game.liya.model.Heros;
 import com.mgr.narratif.game.liya.model.Peripetie;
+import com.mgr.narratif.game.liya.service.ActionService;
 import com.mgr.narratif.game.liya.service.AventureEnCoursService;
 import com.mgr.narratif.game.liya.service.HerosService;
 import com.mgr.narratif.game.liya.service.HistoriqueService;
 import com.mgr.narratif.game.liya.service.PeripetieService;
 import com.mgr.narratif.game.liya.vue.fragment.PeripetieFragment;
-
-import java.util.List;
 
 public class PeripetieActivity extends AppCompatActivity implements PeripetieFragment.OnPeripetieListener {
 
@@ -40,6 +39,10 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         idAventure = getIntent().getStringExtra("idAventure");
         AlimentationAsyncTask aac = new AlimentationAsyncTask();
         aac.execute();
+
+        // On termine les activités d'avant (choix héros, choix aventure)
+        Intent intent = new Intent("finish");
+        sendBroadcast(intent);
 
     }
 
@@ -88,7 +91,8 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
 
         // On va récupérer la péripetie suivante
         if (de != null) {
-            idPeripetie = action.getSuite().get(de.getType());
+            ResultatDes type = ActionService.verifierResult(action, de.getType());
+            idPeripetie = action.getSuite().get(type);
         } else {
             idPeripetie = action.getSuite().get(ResultatDes.AUCUN);
         }
@@ -102,6 +106,22 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         this.peripetieFragment = peripetieFragment;
     }
 
+    @Override
+    public void fermerEcranPeripetie() {
+        finish();
+    }
+
+    @Override
+    public void terminerAventure() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                aventureEnCoursService.arreterAventure(idAventure);
+            }
+        }).start();
+    }
+
+    @SuppressLint("StaticFieldLeak")
     private class PeripetieAsyncTask extends AsyncTask<Void, Void, Peripetie> {
 
         @Override
@@ -116,6 +136,7 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class HerosAsyncTask extends AsyncTask<Void, Void, Heros> {
 
         @Override
@@ -131,6 +152,7 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class AlimentationAsyncTask extends AsyncTask<Void, Void, Void> {
 
         @Override

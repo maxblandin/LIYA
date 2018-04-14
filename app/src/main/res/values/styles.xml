@@ -23,8 +23,13 @@
     </style>
 
     <style name="resultatDes">
-        <item name="android:fontFamily">@font/breamcatcher</item>
+        <item name="android:fontFamily">@font/bebasneue_regular</item>
         <item name="android:textSize">100sp</item>
+    </style>
+
+    <style name="progressResultat" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_marginEnd">80dp</item>
+        <item name="android:layout_marginStart">80dp</item>
     </style>
 
 </resources>

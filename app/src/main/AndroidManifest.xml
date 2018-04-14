@@ -11,18 +11,36 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".vue.activity.MenuActivity">
+        <activity
+            android:name=".vue.activity.MenuActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vue.activity.ChoixAventureActivity" />
-        <activity android:name=".vue.activity.ChoixHerosActivity" />
-        <activity android:name=".vue.activity.PeripetieActivity" />
-        <activity android:name=".vue.activity.ApplicationActivity" />
-        <activity android:name=".vue.activity.ContinuerActivity" />
+        <activity
+            android:name=".vue.activity.ChoixAventureActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".vue.activity.ChoixHerosActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".vue.activity.PeripetieActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".vue.activity.ApplicationActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".vue.activity.ContinuerActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>
