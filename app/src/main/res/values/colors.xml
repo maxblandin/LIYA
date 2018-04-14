@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="separteurPopup">#673AB7</color>
-    <color name="ecritureResDes">#FDD835</color>
-    <color name="resultatDes">#FBC02D</color>
+    <color name="reussite_critique">#E5B223</color>
+    <color name="echec_critique">#FFFFFF</color>
+    <color name="reussite">#1CA022</color>
+    <color name="echec">#C41414</color>
 </resources>

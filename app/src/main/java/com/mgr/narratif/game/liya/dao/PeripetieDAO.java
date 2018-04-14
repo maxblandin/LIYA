@@ -45,7 +45,7 @@ public class PeripetieDAO {
                 true,
                 false,
                 actions1,
-                "paysage1.jpg");
+                "paysage1");
 
         hm4.put(ResultatDes.REUSSITE,"peri5");
         hm4.put(ResultatDes.ECHEC,"peri6");
@@ -61,23 +61,23 @@ public class PeripetieDAO {
 
         Peripetie peri02 = new Peripetie("peri2",
                 "Arrivez devant Orgrimmar, la porte d'entrée est gardé par un garde ...",
-                false,false,actions2, "paysage1.jpg");
+                false,false,actions2, "paysage1");
 
         Peripetie peri05 = new Peripetie("peri5",
                 "Le garde convaincu par votre discours vous ouvre la porte, vous rentrez dans la ville !",
-                false,false,null, "paysage1.jpg");
+                false,false,null, "paysage1");
 
         Peripetie peri06 = new Peripetie("peri6",
                 "Votre coup n'atteind pas le garde et il vous tue ... GAME OVER !",
-                false,false,null, "paysage1.jpg");
+                false,false,null, "paysage1");
 
         Peripetie peri07 = new Peripetie("peri7",
                 "Le garde mort, vous rentrez dans la ville !",
-                false,false,null, "paysage1.jpg");
+                false,false,null, "paysage1");
 
         Peripetie peri03 = new Peripetie("peri3",
                 "Arrivez devant Hurlevent, la porte d'entrée est gardé par un garde ...",
-                false,false, actions2, "paysage1.jpg");
+                false,false, actions2, "paysage1");
 
         hm6.put(ResultatDes.REUSSITE,"peri8");
         hm6.put(ResultatDes.ECHEC,"peri9");
@@ -91,23 +91,23 @@ public class PeripetieDAO {
 
         Peripetie peri04 = new Peripetie("peri4",
                 "Vous essayer de gravir la montage ...",
-                false, false,actions3, "paysage1.jpg");
+                false, false,actions3, "paysage1");
 
         Peripetie peri08 = new Peripetie("peri8",
                 "Vous gravissez la montage avec réussite !",
-                false, true,actions3, "paysage1.jpg");
+                false, true,actions3, "paysage1");
 
         Peripetie peri09 = new Peripetie("peri9",
                 "Vous n'arrivez pas a vous hissez en haut de la montage, vous allez passer la nuit en bas ! ",
-                false, true,actions3, "paysage1.jpg");
+                false, true,actions3, "paysage1");
 
         Peripetie peri10 = new Peripetie("peri10",
                 "Vous êtes un véritable accrobate ! En haut en 10sec",
-                false, true,actions3, "paysage1.jpg");
+                false, true,actions3, "paysage1");
 
         Peripetie peri11 = new Peripetie("peri11",
                 "Vous faites une lourde chute et mourrez ... GAME OVER",
-                false, true,actions3, "paysage1.jpg");
+                false, true,actions3, "paysage1");
 
         peripeties.add(peri01);
         peripeties.add(peri02);

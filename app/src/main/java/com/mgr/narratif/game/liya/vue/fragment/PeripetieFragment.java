@@ -2,8 +2,11 @@ package com.mgr.narratif.game.liya.vue.fragment;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -40,9 +44,15 @@ public class PeripetieFragment extends Fragment {
     ImageView imgPeripetie;
     Button btnAction;
     View popupActions;
+    View popupResultatDes;
+    Button btnRetourMenu;
+
     private Heros heros;
     private Peripetie peripetie;
-    private PopupWindow popupWindow;
+    private PopupWindow popupWindowAction;
+    private PopupWindow popupWindowResultatDes;
+    private ResultatDes dernierResultatDesEnum;
+    private int dernierResultatDes;
 
     public PeripetieFragment() {
         // Required empty public constructor
@@ -68,16 +78,17 @@ public class PeripetieFragment extends Fragment {
         mListener.envoyerFragment(this);
 
         // Alimentation des champs de la vue
-        txtDescription = v.findViewById(R.id.peripetie_description);
-        imgPeripetie   = v.findViewById(R.id.peripetie_img);
-        btnAction      = v.findViewById(R.id.peripetie_btn_actions);
-        popupActions   = inflater.inflate(R.layout.popup_action, container, false);
+        txtDescription   = v.findViewById(R.id.peripetie_description);
+        imgPeripetie     = v.findViewById(R.id.peripetie_img);
+        btnAction        = v.findViewById(R.id.peripetie_btn_actions);
+        popupActions     = inflater.inflate(R.layout.popup_action, container, false);
+        popupResultatDes = inflater.inflate(R.layout.popup_des, container, false);
 
         // On récupère la Peripetie pour alimenté les champs de l'écran
         mListener.getPeripetie();
 
         // On récupère le héros pour le traitement avec les stats des lancés de dés
-        heros = mListener.getHeros();
+        mListener.getHeros();
 
         return v;
     }
@@ -95,7 +106,7 @@ public class PeripetieFragment extends Fragment {
         imgPeripetie.setImageResource(
                 mListener.getContext().getResources().getIdentifier(
                         peripetie.getDrawableImage(), "drawable",
-                        Objects.requireNonNull(getContext()).getPackageName()
+                        (Objects.requireNonNull(getContext())).getPackageName()
                 )
         );
 
@@ -119,7 +130,7 @@ public class PeripetieFragment extends Fragment {
      */
     public void montrerPopupAction(View view) {
 
-        popupWindow = new PopupWindow(popupActions,
+        popupWindowAction = new PopupWindow(popupActions,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         // ListView contenant les actions
@@ -136,27 +147,75 @@ public class PeripetieFragment extends Fragment {
                 // On récupère l'action, on check si un lancer de dé est à faire
                 Action action = (Action) actions.getItemAtPosition(position);
                 Des de = null;
-                String idSuite = null;
 
                 // On effectue le lancer de dé (ou non)
                 if (action.isLancerDes()) {
                     de = lancerDe(action);
-                    idSuite = action.getSuite().get(de.getType());
-                } else {
-                    idSuite = action.getSuite().get(ResultatDes.AUCUN);
+                    dernierResultatDesEnum = de.getType();
+                    dernierResultatDes = de.getResultat();
+                    popupWindowAction.dismiss();
+                    montrerPopupResultatDes(view);
                 }
 
                 mListener.sauvegarderAventure(action, de);
 
                 // Ici on peut ajouter le fait de relancer
                 mListener.getPeripetieSuivante(action, de);
+
+                if (popupWindowAction.isShowing()) {
+                    popupWindowAction.dismiss();
+                }
             }
         });
 
-        popupWindow.setFocusable(true);
+        popupWindowAction.setFocusable(true);
 
         // On lui donne l'endroit ou s'afficher
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        popupWindowAction.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+    }
+
+    /**
+     * Permet d'afficher la popup contenant le résultat de dés
+     * @param view La vue de base sur la quelle la popup viendra s'afficher
+     */
+    public void montrerPopupResultatDes(View view) {
+
+        popupWindowResultatDes = new PopupWindow(popupResultatDes,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        // Récupération des champs de la popup
+        final TextView libelleResDes = popupResultatDes.findViewById(R.id.popup_resultat_libelle);
+        final TextView resultatDes = popupResultatDes.findViewById(R.id.popup_resultat_resultat);
+        final LinearLayout layout = popupResultatDes.findViewById(R.id.popup_des_layout);
+
+        // On insère les valeurs pour l'écran
+        // Le replace ici sert a remplacé les _ de l'enum, comme on récupère par exemple REUSSITE_CRITIQUE.
+        libelleResDes.setText(dernierResultatDesEnum.toString().replace("_", " "));
+        resultatDes.setText(String.valueOf(dernierResultatDes));
+        switch (dernierResultatDesEnum) {
+            case ECHEC:
+                libelleResDes.setTextColor(getResources().getColor(R.color.echec));
+                resultatDes.setTextColor(getResources().getColor(R.color.echec));
+                break;
+            case REUSSITE:
+                libelleResDes.setTextColor(getResources().getColor(R.color.reussite));
+                resultatDes.setTextColor(getResources().getColor(R.color.reussite));
+                break;
+            case ECHEC_CRITIQUE:
+                libelleResDes.setTextColor(getResources().getColor(R.color.echec_critique));
+                resultatDes.setTextColor(getResources().getColor(R.color.echec_critique));
+                break;
+            case REUSSITE_CRITIQUE:
+                libelleResDes.setTextColor(getResources().getColor(R.color.reussite_critique));
+                resultatDes.setTextColor(getResources().getColor(R.color.reussite_critique));
+                break;
+        }
+
+        popupWindowResultatDes.setFocusable(true);
+
+        // On lui donne l'endroit ou s'afficher
+        popupWindowResultatDes.showAtLocation(view, Gravity.CENTER, 0, 0);
 
     }
 
@@ -171,8 +230,8 @@ public class PeripetieFragment extends Fragment {
         // On actualise la péripetie
         actualiserPeripetie();
 
-        if (popupWindow != null) {
-            popupWindow.dismiss();
+        if (popupWindowAction != null) {
+            popupWindowAction.dismiss();
         }
     }
 
@@ -227,10 +286,14 @@ public class PeripetieFragment extends Fragment {
         return resultat;
     }
 
+    public void implementerHeros(Heros heros) {
+        this.heros = heros;
+    }
+
     public interface OnPeripetieListener {
         Context getContext();
         void getPeripetie();
-        Heros getHeros();
+        void getHeros();
         void sauvegarderAventure(Action action, Des de);
         void getPeripetieSuivante(Action action, Des de);
         void envoyerFragment(PeripetieFragment peripetieFragment);

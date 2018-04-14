@@ -1,6 +1,7 @@
 package com.mgr.narratif.game.liya.vue.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.dto.Des;
 import com.mgr.narratif.game.liya.enumeration.ResultatDes;
 import com.mgr.narratif.game.liya.model.Action;
+import com.mgr.narratif.game.liya.model.AventureEnCours;
 import com.mgr.narratif.game.liya.model.Heros;
 import com.mgr.narratif.game.liya.model.Peripetie;
 import com.mgr.narratif.game.liya.service.AventureEnCoursService;
@@ -36,20 +38,8 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         super.onCreate(savedInstanceState);
 
         idAventure = getIntent().getStringExtra("idAventure");
-        idPeripetie = aventureEnCoursService.recupererAventureEnCours(idAventure).getIdPeripetie();
-        heros = herosService.recupererHeros(aventureEnCoursService.recupererAventureEnCours(idAventure).getIdHeros());
-
-        setContentView(R.layout.activity_peripetie);
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        idAventure = getIntent().getStringExtra("idAventure");
-        idPeripetie = aventureEnCoursService.recupererAventureEnCours(idAventure).getIdPeripetie();
-        heros = herosService.recupererHeros(aventureEnCoursService.recupererAventureEnCours(idAventure).getIdHeros());
+        AlimentationAsyncTask aac = new AlimentationAsyncTask();
+        aac.execute();
 
     }
 
@@ -65,8 +55,9 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
     }
 
     @Override
-    public Heros getHeros() {
-        return herosService.recupererHeros(aventureEnCoursService.recupererAventureEnCours(idAventure).getIdHeros());
+    public void getHeros() {
+        HerosAsyncTask hat = new HerosAsyncTask();
+        hat.execute();
     }
 
     @Override
@@ -122,6 +113,37 @@ public class PeripetieActivity extends AppCompatActivity implements PeripetieFra
         protected void onPostExecute(Peripetie peripetie) {
             super.onPostExecute(peripetie);
             peripetieFragment.afficherPeripetie(peripetie);
+        }
+    }
+
+    private class HerosAsyncTask extends AsyncTask<Void, Void, Heros> {
+
+        @Override
+        protected Heros doInBackground(Void... voids) {
+            return herosService.recupererHeros(aventureEnCoursService.recupererAventureEnCours(idAventure).getIdHeros());
+        }
+
+        @Override
+        protected void onPostExecute(Heros hero) {
+            super.onPostExecute(hero);
+            heros = hero;
+            peripetieFragment.implementerHeros(hero);
+        }
+    }
+
+    private class AlimentationAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            idPeripetie = aventureEnCoursService.recupererAventureEnCours(idAventure).getIdPeripetie();
+            heros = herosService.recupererHeros(aventureEnCoursService.recupererAventureEnCours(idAventure).getIdHeros());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            setContentView(R.layout.activity_peripetie);
         }
     }
 

@@ -19,26 +19,4 @@ public enum ResultatDes {
     public int getResultat(){
         return resultat;
     }
-
-    public static String getStringEnumValeur(ResultatDes value){
-        String retour = "";
-        for (ResultatDes resultatDes : ResultatDes.values()) {
-            if (resultatDes.name().equals(value.name())) {
-                retour = resultatDes.name();
-            }
-        }
-
-        return retour;
-    }
-
-    public static ResultatDes getEnumStringValeur(String valeur){
-        ResultatDes retour  = null;
-        for (ResultatDes resultatDes : ResultatDes.values()) {
-            if (resultatDes.name().equals(valeur)) {
-                retour = resultatDes;
-            }
-        }
-
-        return retour;
-    }
 }
