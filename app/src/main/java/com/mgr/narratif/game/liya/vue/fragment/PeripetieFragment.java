@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -56,6 +57,16 @@ public class PeripetieFragment extends Fragment {
     private ResultatDes dernierResultatDesEnum;
     private int dernierResultatDes;
     private int compteur;
+
+    //Widget de la pop des
+    private TextView libelleResDes;
+    private TextView resultatDes;
+    private ImageView imgPopupDes;
+    private ProgressBar progressResultat;
+    private ImageButton relanceDe;
+
+    private Action action;
+    private Des de;
 
     public PeripetieFragment() {
         // Required empty public constructor
@@ -140,6 +151,8 @@ public class PeripetieFragment extends Fragment {
         }
     }
 
+
+
     /**
      * Permet d'afficher la popup contenant les actions
      * @param view La vue de base sur la quelle la popup viendra s'afficher
@@ -161,22 +174,18 @@ public class PeripetieFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // On récupère l'action, on check si un lancer de dé est à faire
-                Action action = (Action) actions.getItemAtPosition(position);
-                Des de = null;
+                action = (Action) actions.getItemAtPosition(position);
+                de = null;
 
                 // On effectue le lancer de dé (ou non)
-                if (action.isLancerDes()) {
-                    de = lancerDe(action);
-                    dernierResultatDesEnum = de.getType();
-                    dernierResultatDes = de.getResultat();
-                    popupWindowAction.dismiss();
+                if (action.isLancerDes()) { //Si l'action nécéssite un jet de dé, on affiche la pop up de résultat
+                    lanceDe();
                     montrerPopupResultatDes(view);
+                }else{ //sinon on passe directement à la péripétie suivante
+                    mListener.getPeripetieSuivante(action, de);
                 }
 
                 mListener.sauvegarderAventure(action, de);
-
-                // Ici on peut ajouter le fait de relancer
-                mListener.getPeripetieSuivante(action, de);
 
                 if (popupWindowAction.isShowing()) {
                     popupWindowAction.dismiss();
@@ -190,7 +199,6 @@ public class PeripetieFragment extends Fragment {
         popupWindowAction.showAtLocation(view, Gravity.CENTER, 0, 0);
 
     }
-
     /**
      * Permet d'afficher la popup contenant le résultat de dés
      * @param view La vue de base sur la quelle la popup viendra s'afficher
@@ -204,11 +212,25 @@ public class PeripetieFragment extends Fragment {
         GestionAnimation.ajouterFondu(popupResultatDes);
 
         // Récupération des champs de la popup
-        final TextView libelleResDes = popupResultatDes.findViewById(R.id.popup_resultat_libelle);
-        final TextView resultatDes = popupResultatDes.findViewById(R.id.popup_resultat_resultat);
-        final ImageView imgPopupDes = popupResultatDes.findViewById(R.id.popup_resultat_image);
-        final ProgressBar progressResultat = popupResultatDes.findViewById(R.id.popup_resultat_progress);
+        libelleResDes = popupResultatDes.findViewById(R.id.popup_resultat_libelle);
+        resultatDes = popupResultatDes.findViewById(R.id.popup_resultat_resultat);
+        imgPopupDes = popupResultatDes.findViewById(R.id.popup_resultat_image);
+        progressResultat = popupResultatDes.findViewById(R.id.popup_resultat_progress);
+        relanceDe = popupResultatDes.findViewById(R.id.btn_relance_de);
 
+        relanceDe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO Gestion des passe partout
+                lanceDe();
+                afficherInfoPopUpDe(v);
+            }
+        });
+
+        afficherInfoPopUpDe(view);
+    }
+
+    private void afficherInfoPopUpDe(View view){
         // On insère les valeurs pour l'écran
         // Le replace ici sert a remplacé les _ de l'enum, comme on récupère par exemple REUSSITE_CRITIQUE.
         libelleResDes.setText(dernierResultatDesEnum.toString().replace("_", " "));
@@ -218,21 +240,25 @@ public class PeripetieFragment extends Fragment {
                 libelleResDes.setTextColor(getResources().getColor(R.color.echec));
                 resultatDes.setTextColor(getResources().getColor(R.color.echec));
                 progressResultat.getProgressDrawable().setColorFilter(getResources().getColor(R.color.echec), PorterDuff.Mode.SRC_IN);
+                relanceDe.setVisibility(View.VISIBLE);
                 break;
             case REUSSITE:
                 libelleResDes.setTextColor(getResources().getColor(R.color.reussite));
                 resultatDes.setTextColor(getResources().getColor(R.color.reussite));
                 progressResultat.getProgressDrawable().setColorFilter(getResources().getColor(R.color.reussite), PorterDuff.Mode.SRC_IN);
+                relanceDe.setVisibility(View.VISIBLE);
                 break;
             case ECHEC_CRITIQUE:
                 libelleResDes.setTextColor(getResources().getColor(R.color.echec_critique));
                 resultatDes.setTextColor(getResources().getColor(R.color.echec_critique));
                 progressResultat.getProgressDrawable().setColorFilter(getResources().getColor(R.color.echec_critique), PorterDuff.Mode.SRC_IN);
+                relanceDe.setVisibility(View.VISIBLE);
                 break;
             case REUSSITE_CRITIQUE:
                 libelleResDes.setTextColor(getResources().getColor(R.color.reussite_critique));
                 resultatDes.setTextColor(getResources().getColor(R.color.reussite_critique));
                 progressResultat.getProgressDrawable().setColorFilter(getResources().getColor(R.color.reussite_critique), PorterDuff.Mode.SRC_IN);
+                relanceDe.setVisibility(View.VISIBLE);
                 break;
         }
 
@@ -258,6 +284,9 @@ public class PeripetieFragment extends Fragment {
             public void onFinish() {
                 compteur++;
                 progressResultat.setProgress(100);
+                relanceDe.setVisibility(View.GONE);
+                //On change de péripétie une fois que la progress bar est fini
+                mListener.getPeripetieSuivante(action, de);
                 popupWindowResultatDes.dismiss();
             }
         };
@@ -282,10 +311,16 @@ public class PeripetieFragment extends Fragment {
 
     /**
      * Lancement des dés lors d'une action
-     * @param action L'action choisie sur l'écran
-     * @return Des le dé contenant le résultat et le type de résultat (normal, echec, etc.)
+     * param action L'action choisie sur l'écran
+     * return Des le dé contenant le résultat et le type de résultat (normal, echec, etc.)
      */
-    public Des lancerDe(Action action) {
+    private void lanceDe(){
+        de = recupererResultatDe(action);
+        dernierResultatDesEnum = de.getType();
+        dernierResultatDes = de.getResultat();
+        popupWindowAction.dismiss();
+    }
+    public Des recupererResultatDe(Action action) {
         // On réalise le lancer de dés suivant la stat demandé
         Des resultat;
         Statistique stat = null;
