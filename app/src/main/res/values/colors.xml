@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="doree">#D1761C</color>
     <color name="separteurPopup">#673AB7</color>
     <color name="reussite_critique">#E5B223</color>
     <color name="echec_critique">#FFFFFF</color>
