@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.Layout;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class GestionImage {
 
-    // Dessous c'est toute la gestion de la taille de l'image
     public static void setScaledImage(final Context context, ImageView imageView, final int resId) {
         final ImageView iv = imageView;
         ViewTreeObserver viewTreeObserver = iv.getViewTreeObserver();

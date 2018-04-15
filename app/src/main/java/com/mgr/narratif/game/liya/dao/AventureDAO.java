@@ -16,9 +16,18 @@ import java.util.List;
 import java.util.Map;
 
 public class AventureDAO {
+    private static final AventureDAO ourInstance = new AventureDAO();
+    private List<Aventure> aventures = new ArrayList<>();
+
+    public static AventureDAO getInstance() {
+        return ourInstance;
+    }
+
+    public AventureDAO() {
+    }
+
 
     public List<Aventure> getJeuxDeTest(){
-        List<Aventure> aventures = new ArrayList<>();
         List<Statistique> statistiques1 = new ArrayList<>();
 
         Statistique s1 = new Statistique("stat1", LibelleStat.PHYSIQUE,75);
