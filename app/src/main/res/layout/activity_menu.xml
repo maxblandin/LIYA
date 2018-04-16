@@ -2,7 +2,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bckgrnd_home_door"
+    android:background="@drawable/background_menu_1080p_sombre"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <fragment

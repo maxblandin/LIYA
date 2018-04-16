@@ -270,8 +270,33 @@ public class PeripetieFragment extends Fragment {
         // On lui donne l'endroit ou s'afficher
         popupWindowResultatDes.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        CountDownTimer progressCompteARebour;
+    }
+
+    /**
+     * Attend la réponse du service de péripetie pour actualiser l'affichage
+     * @param peripetie La peripetie à afficher
+     */
+    public void afficherPeripetie(Peripetie peripetie) {
+        // Récupération de la péripetie du service
+        this.peripetie = peripetie;
+
+        // On actualise la péripetie
+        actualiserPeripetie();
+
+        if (popupWindowAction != null) {
+            popupWindowAction.dismiss();
+        }
+    }
+
+
+    private void lanceDe(){
+        de = recupererResultatDe(action);
+        dernierResultatDesEnum = de.getType();
+        dernierResultatDes = de.getResultat();
+        popupWindowAction.dismiss();
+
         compteur = 0;
+        CountDownTimer progressCompteARebour;
         progressCompteARebour = new CountDownTimer(5000,100) {
 
             @Override
@@ -292,34 +317,11 @@ public class PeripetieFragment extends Fragment {
         };
         progressCompteARebour.start();
     }
-
     /**
-     * Attend la réponse du service de péripetie pour actualiser l'affichage
-     * @param peripetie La peripetie à afficher
+     * Recupération du résulat du lancer
+     * @param action L'action choisie sur l'écran
+     * @return Des le dé contenant le résultat et le type de résultat (normal, echec, etc.)
      */
-    public void afficherPeripetie(Peripetie peripetie) {
-        // Récupération de la péripetie du service
-        this.peripetie = peripetie;
-
-        // On actualise la péripetie
-        actualiserPeripetie();
-
-        if (popupWindowAction != null) {
-            popupWindowAction.dismiss();
-        }
-    }
-
-    /**
-     * Lancement des dés lors d'une action
-     * param action L'action choisie sur l'écran
-     * return Des le dé contenant le résultat et le type de résultat (normal, echec, etc.)
-     */
-    private void lanceDe(){
-        de = recupererResultatDe(action);
-        dernierResultatDesEnum = de.getType();
-        dernierResultatDes = de.getResultat();
-        popupWindowAction.dismiss();
-    }
     public Des recupererResultatDe(Action action) {
         // On réalise le lancer de dés suivant la stat demandé
         Des resultat;
