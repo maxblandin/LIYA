@@ -32,6 +32,12 @@ public class MenuActivity extends AppCompatActivity implements MenuFragment.OnMe
     }
 
     @Override
+    public void lancerBoutique() {
+        Intent intent = new Intent(MenuActivity.this,BoutiqueActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public void quitterApplication() {
         finish();
     }

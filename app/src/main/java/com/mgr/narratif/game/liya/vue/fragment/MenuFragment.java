@@ -20,6 +20,7 @@ public class MenuFragment extends Fragment {
 
     ImageButton btnNouvellePartie;
     ImageButton btnContinuer;
+    ImageButton btnBoutique;
     ImageButton btnQuitter;
 
     public MenuFragment() {}
@@ -31,6 +32,7 @@ public class MenuFragment extends Fragment {
 
         btnNouvellePartie = v.findViewById(R.id.btn_new_game);
         btnContinuer = v.findViewById(R.id.btn_continuer);
+        btnBoutique = v.findViewById(R.id.btn_boutique);
         btnQuitter = v.findViewById(R.id.btn_quitter);
 
         if(mListener != null) {
@@ -45,6 +47,13 @@ public class MenuFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     mListener.continuerPartie();
+                }
+            });
+
+            btnBoutique.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.lancerBoutique();
                 }
             });
 
@@ -72,6 +81,7 @@ public class MenuFragment extends Fragment {
     public interface OnMenuListener{
         void lancerPartie();
         void continuerPartie();
+        void lancerBoutique();
         void quitterApplication();
     }
 

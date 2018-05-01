@@ -3,6 +3,7 @@
     package="com.mgr.narratif.game.liya">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,25 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".vue.activity.MenuActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
-        </activity>
-        <activity
-            android:name=".vue.activity.ChoixAventureActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name=".vue.activity.ChoixHerosActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name=".vue.activity.PeripetieActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name=".vue.activity.ApplicationActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +23,26 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".vue.activity.ChoixAventureActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".vue.activity.ChoixHerosActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".vue.activity.PeripetieActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".vue.activity.ApplicationActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".vue.activity.ContinuerActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity android:name=".vue.activity.BoutiqueActivity"></activity>
     </application>
 
 </manifest>

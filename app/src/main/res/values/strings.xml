@@ -15,4 +15,5 @@
     <string name="aventure_a_continuer">Aventure à continuer</string>
     <string name="menu">Menu</string>
     <string name="fin_aventure">Aventure terminée !</string>
+    <string name="boutique">Boutique</string>
 </resources>
