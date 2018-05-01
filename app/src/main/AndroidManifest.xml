@@ -16,11 +16,6 @@
             android:name=".vue.activity.MenuActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".vue.activity.ChoixAventureActivity"
@@ -37,12 +32,18 @@
         <activity
             android:name=".vue.activity.ApplicationActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".vue.activity.ContinuerActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
-        <activity android:name=".vue.activity.BoutiqueActivity"></activity>
+        <activity android:name=".vue.activity.BoutiqueActivity" />
     </application>
 
 </manifest>
