@@ -1,15 +1,13 @@
 package com.mgr.narratif.game.liya.vue.activity;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.mgr.narratif.game.liya.R;
-import com.mgr.narratif.game.liya.dao.AventureDAO;
 import com.mgr.narratif.game.liya.model.Aventure;
 import com.mgr.narratif.game.liya.service.AventureService;
 import com.mgr.narratif.game.liya.vue.fragment.ChoixAventureFragment;
@@ -34,6 +32,7 @@ public class ChoixAventureActivity extends AppCompatActivity implements ChoixAve
                 if (action.equals("finish")) {
                     finish();
                 }
+                unregisterReceiver(this);
             }
         };
         registerReceiver(broadcastReceiver, new IntentFilter("finish"));

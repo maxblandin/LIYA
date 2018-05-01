@@ -127,12 +127,14 @@ public class PeripetieFragment extends Fragment {
          * récupérer cette valeur via le nom du drawable sauvegardé dans la Peripetie,
          * on fait appel aux ressources du context pour le récupérer via son nom.
          */
-        GestionImage.setScaledImage(getContext(), imgPeripetie,
-                mListener.getContext().getResources().getIdentifier(
-                        peripetie.getDrawableImage(), "drawable",
-                        (Objects.requireNonNull(getContext())).getPackageName()
-                )
-        );
+        if (peripetie.getDrawableImage() != null) {
+            GestionImage.setScaledImage(getContext(), imgPeripetie,
+                    mListener.getContext().getResources().getIdentifier(
+                            peripetie.getDrawableImage(), "drawable",
+                            (Objects.requireNonNull(getContext())).getPackageName()
+                    )
+            );
+        }
 
         // Si la péripetie actuelle est la dernière
         if (peripetie.isFin()) {
@@ -297,22 +299,22 @@ public class PeripetieFragment extends Fragment {
 
         compteur = 0;
         CountDownTimer progressCompteARebour;
-        progressCompteARebour = new CountDownTimer(5000,100) {
+        progressCompteARebour = new CountDownTimer(4400,300) {
 
             @Override
             public void onTick(long millisUntilFinished) {
                 compteur++;
-                progressResultat.setProgress(compteur*100/(500/27));
+                progressResultat.setProgress(compteur*100/(440/30));
             }
 
             @Override
             public void onFinish() {
+                popupWindowResultatDes.dismiss();
                 compteur++;
                 progressResultat.setProgress(100);
                 relanceDe.setVisibility(View.GONE);
                 //On change de péripétie une fois que la progress bar est fini
                 mListener.getPeripetieSuivante(action, de);
-                popupWindowResultatDes.dismiss();
             }
         };
         progressCompteARebour.start();

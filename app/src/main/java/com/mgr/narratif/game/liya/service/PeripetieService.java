@@ -7,7 +7,7 @@ import com.mgr.narratif.game.liya.model.Peripetie;
 import java.util.List;
 
 public class PeripetieService {
-    private PeripetieDAO dao = new PeripetieDAO();
+    private PeripetieDAO dao = PeripetieDAO.getInstance();
 
     public List<Peripetie> recupererPeripeties(String idPeripetie){
         return dao.getPeripeties(idPeripetie);

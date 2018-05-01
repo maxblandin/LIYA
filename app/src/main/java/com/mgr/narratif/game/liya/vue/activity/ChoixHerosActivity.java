@@ -4,19 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.mgr.narratif.game.liya.R;
 import com.mgr.narratif.game.liya.model.Aventure;
-import com.mgr.narratif.game.liya.model.AventureEnCours;
 import com.mgr.narratif.game.liya.model.Heros;
-import com.mgr.narratif.game.liya.model.Peripetie;
 import com.mgr.narratif.game.liya.service.AventureEnCoursService;
 import com.mgr.narratif.game.liya.service.AventureService;
 import com.mgr.narratif.game.liya.service.PeripetieService;
-import com.mgr.narratif.game.liya.vue.fragment.ChoixAventureFragment;
 import com.mgr.narratif.game.liya.vue.fragment.ChoixHerosFragment;
 
 import java.util.List;
@@ -44,6 +40,7 @@ public class ChoixHerosActivity extends AppCompatActivity implements ChoixHerosF
                 if (action.equals("finish")) {
                     finish();
                 }
+                unregisterReceiver(this);
             }
         };
         registerReceiver(broadcastReceiver, new IntentFilter("finish"));
